@@ -1,0 +1,350 @@
+{
+	"compiler": {
+		"version": "0.7.6+commit.7338295f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "bytes",
+								"name": "path",
+								"type": "bytes"
+							},
+							{
+								"internalType": "address",
+								"name": "recipient",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "deadline",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "amountIn",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "amountOutMinimum",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct ISwapRouter.ExactInputParams",
+						"name": "params",
+						"type": "tuple"
+					}
+				],
+				"name": "exactInput",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "amountOut",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "tokenIn",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "tokenOut",
+								"type": "address"
+							},
+							{
+								"internalType": "int24",
+								"name": "tickSpacing",
+								"type": "int24"
+							},
+							{
+								"internalType": "address",
+								"name": "recipient",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "deadline",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "amountIn",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "amountOutMinimum",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint160",
+								"name": "sqrtPriceLimitX96",
+								"type": "uint160"
+							}
+						],
+						"internalType": "struct ISwapRouter.ExactInputSingleParams",
+						"name": "params",
+						"type": "tuple"
+					}
+				],
+				"name": "exactInputSingle",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "amountOut",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "bytes",
+								"name": "path",
+								"type": "bytes"
+							},
+							{
+								"internalType": "address",
+								"name": "recipient",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "deadline",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "amountOut",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "amountInMaximum",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct ISwapRouter.ExactOutputParams",
+						"name": "params",
+						"type": "tuple"
+					}
+				],
+				"name": "exactOutput",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "amountIn",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "tokenIn",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "tokenOut",
+								"type": "address"
+							},
+							{
+								"internalType": "int24",
+								"name": "tickSpacing",
+								"type": "int24"
+							},
+							{
+								"internalType": "address",
+								"name": "recipient",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "deadline",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "amountOut",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "amountInMaximum",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint160",
+								"name": "sqrtPriceLimitX96",
+								"type": "uint160"
+							}
+						],
+						"internalType": "struct ISwapRouter.ExactOutputSingleParams",
+						"name": "params",
+						"type": "tuple"
+					}
+				],
+				"name": "exactOutputSingle",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "amountIn",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "int256",
+						"name": "amount0Delta",
+						"type": "int256"
+					},
+					{
+						"internalType": "int256",
+						"name": "amount1Delta",
+						"type": "int256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "uniswapV3SwapCallback",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"exactInput((bytes,address,uint256,uint256,uint256))": {
+					"params": {
+						"params": "The parameters necessary for the multi-hop swap, encoded as `ExactInputParams` in calldata"
+					},
+					"returns": {
+						"amountOut": "The amount of the received token"
+					}
+				},
+				"exactInputSingle((address,address,int24,address,uint256,uint256,uint256,uint160))": {
+					"params": {
+						"params": "The parameters necessary for the swap, encoded as `ExactInputSingleParams` in calldata"
+					},
+					"returns": {
+						"amountOut": "The amount of the received token"
+					}
+				},
+				"exactOutput((bytes,address,uint256,uint256,uint256))": {
+					"params": {
+						"params": "The parameters necessary for the multi-hop swap, encoded as `ExactOutputParams` in calldata"
+					},
+					"returns": {
+						"amountIn": "The amount of the input token"
+					}
+				},
+				"exactOutputSingle((address,address,int24,address,uint256,uint256,uint256,uint160))": {
+					"params": {
+						"params": "The parameters necessary for the swap, encoded as `ExactOutputSingleParams` in calldata"
+					},
+					"returns": {
+						"amountIn": "The amount of the input token"
+					}
+				},
+				"uniswapV3SwapCallback(int256,int256,bytes)": {
+					"details": "In the implementation you must pay the pool tokens owed for the swap. The caller of this method must be checked to be a CLPool deployed by the canonical CLFactory. amount0Delta and amount1Delta can both be 0 if no tokens were swapped.",
+					"params": {
+						"amount0Delta": "The amount of token0 that was sent (negative) or must be received (positive) by the pool by the end of the swap. If positive, the callback must send that amount of token0 to the pool.",
+						"amount1Delta": "The amount of token1 that was sent (negative) or must be received (positive) by the pool by the end of the swap. If positive, the callback must send that amount of token1 to the pool.",
+						"data": "Any data passed through by the caller via the ICLPoolActions#swap call"
+					}
+				}
+			},
+			"title": "Router token swapping functionality",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"exactInput((bytes,address,uint256,uint256,uint256))": {
+					"notice": "Swaps `amountIn` of one token for as much as possible of another along the specified path"
+				},
+				"exactInputSingle((address,address,int24,address,uint256,uint256,uint256,uint160))": {
+					"notice": "Swaps `amountIn` of one token for as much as possible of another token"
+				},
+				"exactOutput((bytes,address,uint256,uint256,uint256))": {
+					"notice": "Swaps as little as possible of one token for `amountOut` of another along the specified path (reversed)"
+				},
+				"exactOutputSingle((address,address,int24,address,uint256,uint256,uint256,uint160))": {
+					"notice": "Swaps as little as possible of one token for `amountOut` of another token"
+				},
+				"uniswapV3SwapCallback(int256,int256,bytes)": {
+					"notice": "Called to `msg.sender` after executing a swap via ICLPool#swap."
+				}
+			},
+			"notice": "Functions for swapping tokens via CL",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"slipstream-main/contracts/periphery/interfaces/ISwapRouter.sol": "ISwapRouter"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"slipstream-main/contracts/core/interfaces/callback/ICLSwapCallback.sol": {
+			"keccak256": "0xb93e1ef2be3090a64b3b024f60253aef64b875f61dffaef8b9231351f8054948",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://b16ccd544a6a551c977b7a7d6b6b9704c68e86624d66ecb16d945d3b88239458",
+				"dweb:/ipfs/QmPBP5K81AFfHazhbbVb9ZXh6hzKeLqZcEUxnrkKNY7z2L"
+			]
+		},
+		"slipstream-main/contracts/periphery/interfaces/ISwapRouter.sol": {
+			"keccak256": "0xfe235380b98fa2721c00798c106ee3a50e62618810787ca934ca258807660b36",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://411d87e2e60c4f872cc69ce3049c210e9a68826a8d76c1e389c8cd52c4d50adf",
+				"dweb:/ipfs/QmTwvSTe2pAzhzLv1eucRFAZ6wjpPxkwUtBjF1Fat48r9D"
+			]
+		}
+	},
+	"version": 1
+}

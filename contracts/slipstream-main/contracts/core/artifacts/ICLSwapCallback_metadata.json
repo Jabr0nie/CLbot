@@ -1,0 +1,149 @@
+{
+	"compiler": {
+		"version": "0.7.6+commit.7338295f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "int256",
+						"name": "amount0Delta",
+						"type": "int256"
+					},
+					{
+						"internalType": "int256",
+						"name": "amount1Delta",
+						"type": "int256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "uniswapV3SwapCallback",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"slipstream-main/contracts/core/VeloBot.sol": "ICLSwapCallback"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"slipstream-main/contracts/core/VeloBot.sol": {
+			"keccak256": "0xd3b3164b5290b6a0988c9dac808fe28a4441df76a315177b93b9955f93f1ee4d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://365eb5baf6301c22126136f585911c3f5288af34c28832188b258f24eea452e5",
+				"dweb:/ipfs/QmQMvu1N86Qe67C7w8TCwgrSydGBSmMdZtopYuuQN79Zx3"
+			]
+		},
+		"slipstream-main/contracts/core/interfaces/ICLPool.sol": {
+			"keccak256": "0x0a11e1392c4b5ef4e47a3415a9b1a2118e9370d52a253dbd1c910bbbb615e91f",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://0c04e689e0589f3d67961fd5febcdc0f39c0700aeebef2537ccfb29ddba29de1",
+				"dweb:/ipfs/QmbuthGhVJsx45dpgF7p71VSuLshREAsaLJu34HQNgRJoz"
+			]
+		},
+		"slipstream-main/contracts/core/interfaces/IERC20.sol": {
+			"keccak256": "0x92e517b7193e58710601e6593ef1d00b86bc84797742ca1ac03ba6785942bf51",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://82d633aa08e85be9ba8ac8905068ad186c4904e9cf8d8bb9d833510d26d5c2d5",
+				"dweb:/ipfs/QmcEhedYHDVnkGMuXQfKKZjf3eKQFzMFwZ1K9DLWKJP9XQ"
+			]
+		},
+		"slipstream-main/contracts/core/interfaces/pool/ICLPoolActions.sol": {
+			"keccak256": "0x7699f31261ab40982e34febe16128f1edfdad39075969195301352ea66bcac40",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://074f1c470e11f30d0fae8b95b963c9d19dcbd2c5bd17ad4ebba95c5f0f073044",
+				"dweb:/ipfs/QmdDWMUspgBXfLhcxqESez9rSwA8JYNRycmhkhuKoDCWqJ"
+			]
+		},
+		"slipstream-main/contracts/core/interfaces/pool/ICLPoolConstants.sol": {
+			"keccak256": "0xfad00d4ca1a40ef27d9614a98483ca67c4491b6f19e376901745c57a6949b512",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://2b5ea522565efb803d146673ff9e37aa090a5abff334fea587da62f4fb5d6647",
+				"dweb:/ipfs/QmVRPscHFVjYFvRbJf41zVLtA2jVLbEUH66KGtEzspXnWS"
+			]
+		},
+		"slipstream-main/contracts/core/interfaces/pool/ICLPoolDerivedState.sol": {
+			"keccak256": "0xc15e4192a1b7b756cababb994341dc8e78627e1341465e47b1dcb66e9ed54af8",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://ee4b9269244f6b7ac57cba3b8966ac188220596d16cef71d186f0a6446593b4e",
+				"dweb:/ipfs/QmQjyc5ggDgoAv4YbL5uKpNxRDoTvVYw6vePFgu4aNigmQ"
+			]
+		},
+		"slipstream-main/contracts/core/interfaces/pool/ICLPoolEvents.sol": {
+			"keccak256": "0x32fbcac8952f1c5c44b466b0e1c28634ce71372c0f65242aa0d821cebdddcc2b",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://19f22382292967f97640f84a7edfa01cf7deb303bf882344b9985007f1dcbef2",
+				"dweb:/ipfs/Qmej7vWwun9fRBCrcvzPHdZP1jtLSCxJtjTSdkVTcgWeAE"
+			]
+		},
+		"slipstream-main/contracts/core/interfaces/pool/ICLPoolOwnerActions.sol": {
+			"keccak256": "0xeafd14ae3e15c9f663507e004c599618bfd5d2a90d58b3b450f9372f9e3f54f8",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://49472c8cf06dc7084e22fc57ffdce860aa7a9ff77f12e4bef0c13a078bbc5831",
+				"dweb:/ipfs/Qmd29vWULezsJJzhw3wZxsU6Hsng5949v2TiVCbdga4Vqe"
+			]
+		},
+		"slipstream-main/contracts/core/interfaces/pool/ICLPoolState.sol": {
+			"keccak256": "0xe57d65825a097d6f0ab55d7ae39b528695b3df65320ed524124fbb55949bfcf9",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://b63b25beebe612acfd564f40b0d95b3844ee71bf969a3357419e7a54f1ece961",
+				"dweb:/ipfs/Qmdk3mNLz3cSZscbXFsJp69gjgxFcBv6K5mdc6tjnmtFSR"
+			]
+		},
+		"slipstream-main/contracts/core/libraries/FullMath.sol": {
+			"keccak256": "0x5340256039418f5d03512a44173d3dcf1da277a73a461e06fb5668f49cfc46f1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://75dee99795d1125875233a7f1d356935099cc97b4085c0e451060d77db85d144",
+				"dweb:/ipfs/QmTGqyrxVLQd8TBaarqSQDiYvq1QFutCdmTyXk6JpxzKTN"
+			]
+		},
+		"slipstream-main/contracts/core/libraries/TickMath.sol": {
+			"keccak256": "0x2aa3180a8a59b34a513b948d3f2207b5376de7a2c37065853b7c9fbf0cd3d43f",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://c4d46ca5384037f14497c6268342b15becf8bbe1a8fecbcd89ca5b80f41fabc2",
+				"dweb:/ipfs/QmanLcdh7EppV4yJ1CdWfPB67es3nEjrDiByAYwgkSE58D"
+			]
+		}
+	},
+	"version": 1
+}

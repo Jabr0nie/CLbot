@@ -1,0 +1,959 @@
+{
+	"compiler": {
+		"version": "0.7.6+commit.7338295f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint24",
+						"name": "oldUnstakedFee",
+						"type": "uint24"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint24",
+						"name": "newUnstakedFee",
+						"type": "uint24"
+					}
+				],
+				"name": "DefaultUnstakedFeeChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "oldOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnerChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "token0",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "token1",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "int24",
+						"name": "tickSpacing",
+						"type": "int24"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "pool",
+						"type": "address"
+					}
+				],
+				"name": "PoolCreated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "oldFeeManager",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newFeeManager",
+						"type": "address"
+					}
+				],
+				"name": "SwapFeeManagerChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "oldFeeModule",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newFeeModule",
+						"type": "address"
+					}
+				],
+				"name": "SwapFeeModuleChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "int24",
+						"name": "tickSpacing",
+						"type": "int24"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint24",
+						"name": "fee",
+						"type": "uint24"
+					}
+				],
+				"name": "TickSpacingEnabled",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "oldFeeManager",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newFeeManager",
+						"type": "address"
+					}
+				],
+				"name": "UnstakedFeeManagerChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "oldFeeModule",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newFeeModule",
+						"type": "address"
+					}
+				],
+				"name": "UnstakedFeeModuleChanged",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "allPools",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "allPoolsLength",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "tokenA",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "tokenB",
+						"type": "address"
+					},
+					{
+						"internalType": "int24",
+						"name": "tickSpacing",
+						"type": "int24"
+					},
+					{
+						"internalType": "uint160",
+						"name": "sqrtPriceX96",
+						"type": "uint160"
+					}
+				],
+				"name": "createPool",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "pool",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "defaultUnstakedFee",
+				"outputs": [
+					{
+						"internalType": "uint24",
+						"name": "",
+						"type": "uint24"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "int24",
+						"name": "tickSpacing",
+						"type": "int24"
+					},
+					{
+						"internalType": "uint24",
+						"name": "fee",
+						"type": "uint24"
+					}
+				],
+				"name": "enableTickSpacing",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "factoryRegistry",
+				"outputs": [
+					{
+						"internalType": "contract IFactoryRegistry",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "tokenA",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "tokenB",
+						"type": "address"
+					},
+					{
+						"internalType": "int24",
+						"name": "tickSpacing",
+						"type": "int24"
+					}
+				],
+				"name": "getPool",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "pool",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "pool",
+						"type": "address"
+					}
+				],
+				"name": "getSwapFee",
+				"outputs": [
+					{
+						"internalType": "uint24",
+						"name": "",
+						"type": "uint24"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "pool",
+						"type": "address"
+					}
+				],
+				"name": "getUnstakedFee",
+				"outputs": [
+					{
+						"internalType": "uint24",
+						"name": "",
+						"type": "uint24"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "pool",
+						"type": "address"
+					}
+				],
+				"name": "isPair",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "poolImplementation",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint24",
+						"name": "_defaultUnstakedFee",
+						"type": "uint24"
+					}
+				],
+				"name": "setDefaultUnstakedFee",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_owner",
+						"type": "address"
+					}
+				],
+				"name": "setOwner",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_swapFeeManager",
+						"type": "address"
+					}
+				],
+				"name": "setSwapFeeManager",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_swapFeeModule",
+						"type": "address"
+					}
+				],
+				"name": "setSwapFeeModule",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_unstakedFeeManager",
+						"type": "address"
+					}
+				],
+				"name": "setUnstakedFeeManager",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_unstakedFeeModule",
+						"type": "address"
+					}
+				],
+				"name": "setUnstakedFeeModule",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "swapFeeManager",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "swapFeeModule",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "int24",
+						"name": "tickSpacing",
+						"type": "int24"
+					}
+				],
+				"name": "tickSpacingToFee",
+				"outputs": [
+					{
+						"internalType": "uint24",
+						"name": "fee",
+						"type": "uint24"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "tickSpacings",
+				"outputs": [
+					{
+						"internalType": "int24[]",
+						"name": "",
+						"type": "int24[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "unstakedFeeManager",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "unstakedFeeModule",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "voter",
+				"outputs": [
+					{
+						"internalType": "contract IVoter",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"events": {
+				"DefaultUnstakedFeeChanged(uint24,uint24)": {
+					"params": {
+						"newUnstakedFee": "The defaultUnstakedFee after the unstakedFeeModule was changed",
+						"oldUnstakedFee": "The defaultUnstakedFee before the defaultUnstakedFee was changed"
+					}
+				},
+				"OwnerChanged(address,address)": {
+					"params": {
+						"newOwner": "The owner after the owner was changed",
+						"oldOwner": "The owner before the owner was changed"
+					}
+				},
+				"PoolCreated(address,address,int24,address)": {
+					"params": {
+						"pool": "The address of the created pool",
+						"tickSpacing": "The minimum number of ticks between initialized ticks",
+						"token0": "The first token of the pool by address sort order",
+						"token1": "The second token of the pool by address sort order"
+					}
+				},
+				"SwapFeeManagerChanged(address,address)": {
+					"params": {
+						"newFeeManager": "The swapFeeManager after the swapFeeManager was changed",
+						"oldFeeManager": "The swapFeeManager before the swapFeeManager was changed"
+					}
+				},
+				"SwapFeeModuleChanged(address,address)": {
+					"params": {
+						"newFeeModule": "The swapFeeModule after the swapFeeModule was changed",
+						"oldFeeModule": "The swapFeeModule before the swapFeeModule was changed"
+					}
+				},
+				"TickSpacingEnabled(int24,uint24)": {
+					"params": {
+						"fee": "The default fee for a pool created with a given tickSpacing",
+						"tickSpacing": "The minimum number of ticks between initialized ticks for pools"
+					}
+				},
+				"UnstakedFeeManagerChanged(address,address)": {
+					"params": {
+						"newFeeManager": "The unstakedFeeManager after the unstakedFeeManager was changed",
+						"oldFeeManager": "The unstakedFeeManager before the unstakedFeeManager was changed"
+					}
+				},
+				"UnstakedFeeModuleChanged(address,address)": {
+					"params": {
+						"newFeeModule": "The unstakedFeeModule after the unstakedFeeModule was changed",
+						"oldFeeModule": "The unstakedFeeModule before the unstakedFeeModule was changed"
+					}
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"allPools(uint256)": {
+					"params": {
+						"index": "Index of the pool"
+					},
+					"returns": {
+						"_0": "The pool address in the given index"
+					}
+				},
+				"allPoolsLength()": {
+					"returns": {
+						"_0": "Number of pools created from this factory"
+					}
+				},
+				"createPool(address,address,int24,uint160)": {
+					"details": "tokenA and tokenB may be passed in either order: token0/token1 or token1/token0. The call will revert if the pool already exists, the tick spacing is invalid, or the token arguments are invalid",
+					"params": {
+						"sqrtPriceX96": "The initial sqrt price of the pool, as a Q64.96",
+						"tickSpacing": "The desired tick spacing for the pool",
+						"tokenA": "One of the two tokens in the desired pool",
+						"tokenB": "The other of the two tokens in the desired pool"
+					},
+					"returns": {
+						"pool": "The address of the newly created pool"
+					}
+				},
+				"defaultUnstakedFee()": {
+					"details": "Can be changed by the current unstaked fee manager via setDefaultUnstakedFee",
+					"returns": {
+						"_0": "The default Unstaked Fee of the factory"
+					}
+				},
+				"enableTickSpacing(int24,uint24)": {
+					"details": "Tick spacings may never be removed once enabled",
+					"params": {
+						"fee": "The default fee associated with a given tick spacing",
+						"tickSpacing": "The spacing between ticks to be enforced in the pool"
+					}
+				},
+				"factoryRegistry()": {
+					"returns": {
+						"_0": "The address of the factory registry"
+					}
+				},
+				"getPool(address,address,int24)": {
+					"details": "tokenA and tokenB may be passed in either token0/token1 or token1/token0 order",
+					"params": {
+						"tickSpacing": "The tick spacing of the pool",
+						"tokenA": "The contract address of either token0 or token1",
+						"tokenB": "The contract address of the other token"
+					},
+					"returns": {
+						"pool": "The pool address"
+					}
+				},
+				"getSwapFee(address)": {
+					"details": "Swap & flash fee is denominated in pips. i.e. 1e-6",
+					"params": {
+						"pool": "The pool to get the swap & flash fee for"
+					},
+					"returns": {
+						"_0": "The swap & flash fee for the given pool"
+					}
+				},
+				"getUnstakedFee(address)": {
+					"details": "Unstaked fee is denominated in pips. i.e. 1e-6",
+					"params": {
+						"pool": "The pool to get the unstaked fee for"
+					},
+					"returns": {
+						"_0": "The unstaked fee for the given pool"
+					}
+				},
+				"isPair(address)": {
+					"params": {
+						"pool": "The address of the pool to check"
+					},
+					"returns": {
+						"_0": "Whether the pool is a valid pool of the factory"
+					}
+				},
+				"owner()": {
+					"details": "Can be changed by the current owner via setOwner",
+					"returns": {
+						"_0": "The address of the factory owner"
+					}
+				},
+				"poolImplementation()": {
+					"returns": {
+						"_0": "The address of the pool implementation contract"
+					}
+				},
+				"setDefaultUnstakedFee(uint24)": {
+					"details": "Must be called by the current unstaked fee manager",
+					"params": {
+						"_defaultUnstakedFee": "The new defaultUnstakedFee of the factory"
+					}
+				},
+				"setOwner(address)": {
+					"details": "Must be called by the current owner",
+					"params": {
+						"_owner": "The new owner of the factory"
+					}
+				},
+				"setSwapFeeManager(address)": {
+					"details": "Must be called by the current swap fee manager",
+					"params": {
+						"_swapFeeManager": "The new swapFeeManager of the factory"
+					}
+				},
+				"setSwapFeeModule(address)": {
+					"details": "Must be called by the current swap fee manager",
+					"params": {
+						"_swapFeeModule": "The new swapFeeModule of the factory"
+					}
+				},
+				"setUnstakedFeeManager(address)": {
+					"details": "Must be called by the current unstaked fee manager",
+					"params": {
+						"_unstakedFeeManager": "The new unstakedFeeManager of the factory"
+					}
+				},
+				"setUnstakedFeeModule(address)": {
+					"details": "Must be called by the current unstaked fee manager",
+					"params": {
+						"_unstakedFeeModule": "The new unstakedFeeModule of the factory"
+					}
+				},
+				"swapFeeManager()": {
+					"details": "Can be changed by the current swap fee manager via setSwapFeeManager",
+					"returns": {
+						"_0": "The address of the factory swapFeeManager"
+					}
+				},
+				"swapFeeModule()": {
+					"details": "Can be changed by the current swap fee manager via setSwapFeeModule",
+					"returns": {
+						"_0": "The address of the factory swapFeeModule"
+					}
+				},
+				"tickSpacingToFee(int24)": {
+					"details": "Use getFee for the most up to date fee for a given pool. A tick spacing can never be removed, so this value should be hard coded or cached in the calling context",
+					"params": {
+						"tickSpacing": "The enabled tick spacing. Returns 0 if not enabled"
+					},
+					"returns": {
+						"fee": "The default fee for the given tick spacing"
+					}
+				},
+				"tickSpacings()": {
+					"details": "Tick spacings cannot be removed. Tick spacings are not ordered",
+					"returns": {
+						"_0": "List of enabled tick spacings"
+					}
+				},
+				"unstakedFeeManager()": {
+					"details": "Can be changed by the current unstaked fee manager via setUnstakedFeeManager",
+					"returns": {
+						"_0": "The address of the factory unstakedFeeManager"
+					}
+				},
+				"unstakedFeeModule()": {
+					"details": "Can be changed by the current unstaked fee manager via setUnstakedFeeModule",
+					"returns": {
+						"_0": "The address of the factory unstakedFeeModule"
+					}
+				},
+				"voter()": {
+					"returns": {
+						"_0": "The address of the voter contract"
+					}
+				}
+			},
+			"title": "The interface for the CL Factory",
+			"version": 1
+		},
+		"userdoc": {
+			"events": {
+				"DefaultUnstakedFeeChanged(uint24,uint24)": {
+					"notice": "Emitted when the defaultUnstakedFee of the factory is changed"
+				},
+				"OwnerChanged(address,address)": {
+					"notice": "Emitted when the owner of the factory is changed"
+				},
+				"PoolCreated(address,address,int24,address)": {
+					"notice": "Emitted when a pool is created"
+				},
+				"SwapFeeManagerChanged(address,address)": {
+					"notice": "Emitted when the swapFeeManager of the factory is changed"
+				},
+				"SwapFeeModuleChanged(address,address)": {
+					"notice": "Emitted when the swapFeeModule of the factory is changed"
+				},
+				"TickSpacingEnabled(int24,uint24)": {
+					"notice": "Emitted when a new tick spacing is enabled for pool creation via the factory"
+				},
+				"UnstakedFeeManagerChanged(address,address)": {
+					"notice": "Emitted when the unstakedFeeManager of the factory is changed"
+				},
+				"UnstakedFeeModuleChanged(address,address)": {
+					"notice": "Emitted when the unstakedFeeModule of the factory is changed"
+				}
+			},
+			"kind": "user",
+			"methods": {
+				"allPools(uint256)": {
+					"notice": "Return address of pool created by this factory given its `index`"
+				},
+				"allPoolsLength()": {
+					"notice": "Returns the number of pools created from this factory"
+				},
+				"createPool(address,address,int24,uint160)": {
+					"notice": "Creates a pool for the given two tokens and fee"
+				},
+				"defaultUnstakedFee()": {
+					"notice": "Returns the current defaultUnstakedFee of the factory"
+				},
+				"enableTickSpacing(int24,uint24)": {
+					"notice": "Enables a certain tickSpacing"
+				},
+				"factoryRegistry()": {
+					"notice": "Factory registry for valid pool / gauge / rewards factories"
+				},
+				"getPool(address,address,int24)": {
+					"notice": "Returns the pool address for a given pair of tokens and a tick spacing, or address 0 if it does not exist"
+				},
+				"getSwapFee(address)": {
+					"notice": "Get swap & flash fee for a given pool. Accounts for default and dynamic fees"
+				},
+				"getUnstakedFee(address)": {
+					"notice": "Get unstaked fee for a given pool. Accounts for default and dynamic fees"
+				},
+				"isPair(address)": {
+					"notice": "Used in VotingEscrow to determine if a contract is a valid pool of the factory"
+				},
+				"owner()": {
+					"notice": "Returns the current owner of the factory"
+				},
+				"poolImplementation()": {
+					"notice": "The address of the pool implementation contract used to deploy proxies / clones"
+				},
+				"setDefaultUnstakedFee(uint24)": {
+					"notice": "Updates the defaultUnstakedFee of the factory"
+				},
+				"setOwner(address)": {
+					"notice": "Updates the owner of the factory"
+				},
+				"setSwapFeeManager(address)": {
+					"notice": "Updates the swapFeeManager of the factory"
+				},
+				"setSwapFeeModule(address)": {
+					"notice": "Updates the swapFeeModule of the factory"
+				},
+				"setUnstakedFeeManager(address)": {
+					"notice": "Updates the unstakedFeeManager of the factory"
+				},
+				"setUnstakedFeeModule(address)": {
+					"notice": "Updates the unstakedFeeModule of the factory"
+				},
+				"swapFeeManager()": {
+					"notice": "Returns the current swapFeeManager of the factory"
+				},
+				"swapFeeModule()": {
+					"notice": "Returns the current swapFeeModule of the factory"
+				},
+				"tickSpacingToFee(int24)": {
+					"notice": "Returns a default fee for a tick spacing."
+				},
+				"tickSpacings()": {
+					"notice": "Returns a list of enabled tick spacings. Used to iterate through pools created by the factory"
+				},
+				"unstakedFeeManager()": {
+					"notice": "Returns the current unstakedFeeManager of the factory"
+				},
+				"unstakedFeeModule()": {
+					"notice": "Returns the current unstakedFeeModule of the factory"
+				},
+				"voter()": {
+					"notice": "The voter contract, used to create gauges"
+				}
+			},
+			"notice": "The CL Factory facilitates creation of CL pools and control over the protocol fees",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"slipstream-main/contracts/core/interfaces/ICLFactory.sol": "ICLFactory"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"slipstream-main/contracts/core/interfaces/ICLFactory.sol": {
+			"keccak256": "0x1ce601aca32218fdcaab8b69cee7e7a24d236ae1c0b71ac4f0db1f0623fda836",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://9ca5717660ec015585f86d2a7489454427a6db8538b3731f9e999bc1a154550f",
+				"dweb:/ipfs/QmNVHgcemmeWvfFH9NFwLo1F48facq4fRU8CYWLLZTzwKX"
+			]
+		},
+		"slipstream-main/contracts/core/interfaces/IFactoryRegistry.sol": {
+			"keccak256": "0xa2dbe19a5c9e221ffd8e4612ee8a4aa1233ab0ad059d4b7d91a8dca1153bcea0",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://47a01d481d3a1f5172b8601d267439e24662849d7ebb3e1e66ec46d541e57831",
+				"dweb:/ipfs/QmYG56TEtS8dwHrNaHxGrTp8r6cDzRkuGKsHBbiToUVEvX"
+			]
+		},
+		"slipstream-main/contracts/core/interfaces/IVoter.sol": {
+			"keccak256": "0xc8dfa59e1f090a996e58997ce476367f897e796241e8af1dfbada66e8b6b40b6",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5bb910ae265ba34cf02335f6d2345f594ce9e6cdf37142a804af85c4bfcf93c1",
+				"dweb:/ipfs/QmVD1PnMPCPpUfduGMKXfCRhRREVhZm5qKcQkXmzr5hSux"
+			]
+		},
+		"slipstream-main/contracts/core/interfaces/IVotingEscrow.sol": {
+			"keccak256": "0x17ee815f29f7bc6a1528203976ed5bfdd945354dd72a7d322e8b092e331beb3d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9845c5056470191730c8a8688663bc9808172e57395c1c6053b5145bf9fd5098",
+				"dweb:/ipfs/QmXyoRGbDe6KPngPsKXWZCyLLdmRTFKdhVD5Gf1Y15rG7a"
+			]
+		}
+	},
+	"version": 1
+}

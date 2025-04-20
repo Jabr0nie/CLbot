@@ -1,0 +1,112 @@
+{
+	"compiler": {
+		"version": "0.7.6+commit.7338295f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "poolFactory",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "votingRewardsFactory",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "gaugeFactory",
+						"type": "address"
+					}
+				],
+				"name": "approve",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "poolFactory",
+						"type": "address"
+					}
+				],
+				"name": "factoriesToPoolFactory",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "votingRewardsFactory",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "gaugeFactory",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "poolFactory",
+						"type": "address"
+					}
+				],
+				"name": "isPoolFactoryApproved",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"slipstream-main/contracts/core/interfaces/IFactoryRegistry.sol": "IFactoryRegistry"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"slipstream-main/contracts/core/interfaces/IFactoryRegistry.sol": {
+			"keccak256": "0xa2dbe19a5c9e221ffd8e4612ee8a4aa1233ab0ad059d4b7d91a8dca1153bcea0",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://47a01d481d3a1f5172b8601d267439e24662849d7ebb3e1e66ec46d541e57831",
+				"dweb:/ipfs/QmYG56TEtS8dwHrNaHxGrTp8r6cDzRkuGKsHBbiToUVEvX"
+			]
+		}
+	},
+	"version": 1
+}
