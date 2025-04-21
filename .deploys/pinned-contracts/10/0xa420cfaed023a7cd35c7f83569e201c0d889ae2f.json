@@ -1,0 +1,40 @@
+{
+  "name": "VeloOracle",
+  "address": "0xa420cfaed023a7cd35c7f83569e201c0d889ae2f",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "pool",
+          "type": "address"
+        }
+      ],
+      "name": "GetPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "V3Pool",
+      "outputs": [
+        {
+          "internalType": "contract ICLPoolDerivedState",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "filePath": "CLBot/contracts/core/VeloOracle.sol",
+  "pinnedAt": 1745201993714
+}
