@@ -15,6 +15,7 @@ import "./libraries/FixedPoint128.sol";
 import "./libraries/TransferHelper.sol";
 import "./libraries/TickMath.sol";
 import "./libraries/LiquidityMath.sol";
+import "./libraries/LiquidityAmounts.sol";
 import "./libraries/SqrtPriceMath.sol";
 
 import "./interfaces/ICLFactory.sol";
@@ -149,10 +150,15 @@ contract V3Bot is ICLSwapCallback {
 
 function addLiquidity(uint256 amount0ToMint, uint256 amount1ToMint) external payable returns (uint256 tokenId, uint128 liquidity, uint256 amount0, uint256 amount1){
     // Approve the position manager
+
+    // Get current sqrtPriceX96 from the pool
+        (uint160 sqrtPriceX96, int24 currenttick, , , , ) = ICLPoolState(pool).slot0();
+        currenttick = (currenttick / tickSpacing) * tickSpacing;
+        uint160 sqrtPriceX96A;
+
     //Approve Tokens
         IERC20Minimal(token0).approve(farmNFT, amount0ToMint);
         IERC20Minimal(token1).approve(farmNFT, amount1ToMint);
-        (uint160 sqrtPriceX96,,,,,) = ICLPoolState(pool).slot0();
 
         INonfungiblePositionManager.MintParams memory params =
             INonfungiblePositionManager.MintParams({
@@ -198,5 +204,19 @@ function addLiquidity(uint256 amount0ToMint, uint256 amount1ToMint) external pay
         deposits[tokenId] = Deposit({owner: owner, liquidity: liquidity, token0: _token0, token1: _token1});
     }
 
+        // Get current sqrtPriceX96 from the pool
+        function _checkLiquidity() external view returns (uint amount0, uint amount1){
 
+        (uint160 sqrtPriceX96, int24 currentTick, , , , ) = ICLPoolState(pool).slot0();
+        currentTick = (currentTick / tickSpacing) * tickSpacing;
+        int24 lowTick = currentTick - tickSpacing;
+        int24 highTick = currentTick + tickSpacing;
+        uint160 sqrtPriceX96A = TickMath.getSqrtRatioAtTick(lowTick);
+        uint160 sqrtPriceX96B = TickMath.getSqrtRatioAtTick(highTick);
+
+        //In procee = need to balance of this address for token0 and 1 and then...
+ (uint liquidity) = getLiquidityForAmounts(sqrtRatioX96, sqrtRatioX96A, sqrtRatioX96B, amount0, amount1)
+    ) internal pure returns (uint128 liquidity)
+
+    }
 }

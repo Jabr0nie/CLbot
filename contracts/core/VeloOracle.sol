@@ -14,6 +14,7 @@ import "./libraries/FixedPoint128.sol";
 import "./libraries/TransferHelper.sol";
 import "./libraries/TickMath.sol";
 import "./libraries/LiquidityMath.sol";
+import "./libraries/LiquidityAmounts.sol";
 import "./libraries/SqrtPriceMath.sol";
 
 contract VeloOracle {
@@ -39,17 +40,14 @@ uint32[] private secondsAgos = [0,1];
         return price;
     }
 
-     
-     function calcLiquidity(address pool, ) public view returns (uint)  
-
-     // compute the liquidity amount
-        {
-            (uint160 sqrtPriceX96,,,,,) = pool.slot0();
-            uint160 sqrtRatioAX96 = TickMath.getSqrtRatioAtTick(params.tickLower);
-            uint160 sqrtRatioBX96 = TickMath.getSqrtRatioAtTick(params.tickUpper);
-
-            liquidity = LiquidityAmounts.getLiquidityForAmounts(
-                sqrtPriceX96, sqrtRatioAX96, sqrtRatioBX96, params.amount0Desired, params.amount1Desired
-            );
-        }
+   function getLiquidityForAmounts(
+        uint160 sqrtRatioX96,
+        uint160 sqrtRatioAX96,
+        uint160 sqrtRatioBX96,
+        uint256 amount0,
+        uint256 amount1
+    ) external pure returns (uint128 liquidity) {
+        
+        return LiquidityAmounts.getLiquidityForAmounts(sqrtRatioX96, sqrtRatioAX96, sqrtRatioBX96, amount0, amount1);
+    }
 }
