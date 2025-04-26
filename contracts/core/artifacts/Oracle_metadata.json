@@ -69,11 +69,11 @@
 			]
 		},
 		"contracts/core/VeloBot.sol": {
-			"keccak256": "0x6e7200a6a1c4ffc726461a8195709a54eb8c62f9fb259c0ee6a43115db155f90",
+			"keccak256": "0x30882af294cf04df00ad719c666eb5b3aaa410ade13feb8c74ab587b4c4f5616",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://620e1d04cd2390bb30d7b9a87caf9126d5784ed6cfd943b1c64a84f7cb1debdd",
-				"dweb:/ipfs/QmTijo9nJKfp82b5TY8MSBTofuKr4NRrwquDMjFftiHg5g"
+				"bzz-raw://a42c3597a0213a0ee96ddebf5dca99445bd1c63beddf12c7e7d5c5891a4f09d4",
+				"dweb:/ipfs/QmP7swmnUGuzYGhkG8K6k5PwUFv2uRYbHfj8iSJWqVWWUG"
 			]
 		},
 		"contracts/core/interfaces/ICLFactory.sol": {
@@ -218,6 +218,14 @@
 			"urls": [
 				"bzz-raw://75dee99795d1125875233a7f1d356935099cc97b4085c0e451060d77db85d144",
 				"dweb:/ipfs/QmTGqyrxVLQd8TBaarqSQDiYvq1QFutCdmTyXk6JpxzKTN"
+			]
+		},
+		"contracts/core/libraries/LiquidityAmounts.sol": {
+			"keccak256": "0xae7f7b0bbbd864bc1761ec5eac62ec761f2ef168d32ef9e914e337b077ebba4a",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://b57b2f04997cd6055404801982f57083f8e9242935b3ebf3bbed032f5035f2f1",
+				"dweb:/ipfs/QmdxHVMQEA32jnyroWZG2sk4NPtQFWXPfkDDYvRtK2APFA"
 			]
 		},
 		"contracts/core/libraries/LiquidityMath.sol": {
