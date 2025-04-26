@@ -18,6 +18,15 @@ import "./libraries/LiquidityMath.sol";
 import "./libraries/LiquidityAmounts.sol";
 import "./libraries/SqrtPriceMath.sol";
 
+import "./interfaces/ICLFactory.sol";
+import "./interfaces/IFactoryRegistry.sol";
+import "./interfaces/IERC20Minimal.sol";
+import "./interfaces/callback/ICLMintCallback.sol";
+import "./interfaces/callback/ICLSwapCallback.sol";
+import "contracts/libraries/VelodromeTimeLibrary.sol";
+import "./IERC721.sol";
+import "./INonfungiblePositionManager.sol";
+
 contract LiquidityCalculator {
     // Uniswap V3 pool for the token pair
     ICLPool public immutable pool;
@@ -27,52 +36,54 @@ contract LiquidityCalculator {
     }
 
 
-    function getTicks (uint128 liquidity) external view returns (uint amount0, uint amount1){
-        //address token0 = ICLPoolConstants(pool).token0();
-       // address token1 = ICLPoolConstants(pool).token1();
-       // address farmNFT = ICLPoolConstants(pool).nft();
-
-
- //      Estimate Liquidity (L):
-                        //    The USD value of the position is approximately the sum of amount0 (DAI) and amount1 (USDC), since both are stablecoins worth $1.
-//
-  //                          For a position in the range [-600, 600] with the current price at tick = 0, you provide both tokens.
-//
-  //                          The token amounts are:
-    //                        amount0 = L * (1/√P_lower - 1/√P_upper).
-//
-  //                          amount1 = L * (√P_upper - √P_lower).
-//
-  //                          Substituting:
-    //                        √P_lower ≈ 0.994, √P_upper ≈ 1.006, √P_current = 1.
-
-      //                      amount0 = L * (1/0.994 - 1/1.006) ≈ L * (1.006 - 0.994) ≈ L * 0.012.
-
-        //                    amount1 = L * (1.006 - 0.994) ≈ L * 0.012.
-
-          //                  Total USD value: amount0 + amount1 ≈ L * 0.012 + L * 0.012 = L * 0.024.
-
-            //                Set the USD value to $80:
-              //              L * 0.024 = 80.
-
-                //            L ≈ 80 / 0.024 ≈ 3333.33.
-
-
+    function getTicks () public view returns (int24 lowTick, int24 highTick){
         int24 tickSpacing = ICLPoolConstants(pool).tickSpacing();
-        (uint160 sqrtPriceX96, int24 currentTick, , , , ) = ICLPool(pool).slot0();
+        (, int24 currentTick, , , , ) = ICLPool(pool).slot0();
         currentTick = (currentTick / tickSpacing) * tickSpacing;
-        int24 lowTick = currentTick - tickSpacing;
-        int24 highTick = currentTick + tickSpacing;
-        uint160 sqrtPriceLower = TickMath.getSqrtRatioAtTick(lowTick);
-        uint160 sqrtPriceUpper = TickMath.getSqrtRatioAtTick(highTick);
-        // Current price in range: both tokens needed
-        amount0 = getAmount0ForLiquidity(sqrtPriceLower, sqrtPriceUpper, liquidity);
-        amount1 = getAmount1ForLiquidity(sqrtPriceLower, sqrtPriceUpper, liquidity);
-        
-        return (amount0, amount1);
+        lowTick = currentTick - tickSpacing;
+        highTick = currentTick + tickSpacing;
+
+    
+        return (lowTick, highTick);
         }
 
-    function getAmount0ForLiquidity(uint160 sqrtRatioAX96, uint160 sqrtRatioBX96, uint128 liquidity)
+         // Calculate liquidity and token amounts for a given USD value
+    function calculateLiquidityForUSD(
+        uint256 usdAmount // Total USD value (in 18 decimals, e.g., 80e18 for $80)
+    ) external view returns (uint amount0, uint amount1) {
+        
+        (int24 tickLower,int24 tickUpper) = getTicks();
+
+        // Get square root prices for ticks
+        uint160 sqrtPriceLower = TickMath.getSqrtRatioAtTick(tickLower);
+        uint160 sqrtPriceUpper = TickMath.getSqrtRatioAtTick(tickUpper);
+
+        // Calculate price differences
+        // Δ(1/√P) = 1/√P_lower - 1/√P_upper
+        uint256 deltaInvSqrtPrice;
+        {
+            deltaInvSqrtPrice = FullMath.mulDiv(1e18, 1 << 96, sqrtPriceLower) -
+                                FullMath.mulDiv(1e18, 1 << 96, sqrtPriceUpper);
+        }
+
+        // Δ√P = √P_upper - √P_lower
+        uint256 deltaSqrtPrice = uint256(sqrtPriceUpper) - uint256(sqrtPriceLower);
+
+        // Assume USD value splits evenly for stablecoin pair (1:1 price)
+        // For DAI/USDC at 1:1, amount0 (DAI, 18 decimals) + amount1 (USDC, 6 decimals) ≈ usdAmount
+        // Total USD value: amount0 + amount1 * 10^12 (adjusting USDC to 18 decimals) = usdAmount
+        // amount0 = L * Δ(1/√P), amount1 = L * Δ√P
+        // Total USD: L * Δ(1/√P) + L * Δ√P * 10^12 = usdAmount
+        // L = usdAmount / (Δ(1/√P) + Δ√P * 10^12)
+
+        uint256 denominator = deltaInvSqrtPrice + FullMath.mulDiv(deltaSqrtPrice, 1e12, 1 << 96);
+        uint128 liquidity = uint128(FullMath.mulDiv(usdAmount, 1e18, denominator));
+
+        amount0 = getAmount0ForLiquidity(sqrtPriceLower, sqrtPriceUpper, liquidity);
+        amount1 = getAmount1ForLiquidity(sqrtPriceLower, sqrtPriceUpper, liquidity);
+    }
+
+       function getAmount0ForLiquidity(uint160 sqrtRatioAX96, uint160 sqrtRatioBX96, uint128 liquidity)
         internal
         pure
         returns (uint256 amount0)
