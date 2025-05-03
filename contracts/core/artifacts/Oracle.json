@@ -47,7 +47,8 @@
 		},
 		"gasEstimates": null,
 		"methodIdentifiers": {
-			"GetPrice(address)": "f29d0040"
+			"GetPrice(address)": "f29d0040",
+			"getAmountsforLiquidity(address,uint256)": "941e0eb8"
 		}
 	},
 	"abi": [
@@ -64,6 +65,35 @@
 				{
 					"internalType": "uint256",
 					"name": "price",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "pool",
+					"type": "address"
+				},
+				{
+					"internalType": "uint256",
+					"name": "usdAmount",
+					"type": "uint256"
+				}
+			],
+			"name": "getAmountsforLiquidity",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "amount0",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "amount1",
 					"type": "uint256"
 				}
 			],

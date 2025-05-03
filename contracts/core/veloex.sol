@@ -42,13 +42,11 @@ contract LiquidityCalculator {
         currentTick = (currentTick / tickSpacing) * tickSpacing;
         lowTick = currentTick - tickSpacing;
         highTick = currentTick + tickSpacing;
-
-    
         return (lowTick, highTick);
         }
 
          // Calculate liquidity and token amounts for a given USD value
-    function calculateLiquidityForUSD(
+    function getLiquidityForAmounts(
         uint256 usdAmount // Total USD value (in 18 decimals, e.g., 80e18 for $80)
     ) external view returns (uint amount0, uint amount1) {
         

@@ -324,7 +324,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/core/Imisc.sol": "IERC721"
+			"contracts/core/IERC721.sol": "IERC721"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -338,7 +338,7 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/core/Imisc.sol": {
+		"contracts/core/IERC721.sol": {
 			"keccak256": "0xa5d0054dd7767bd5a6b897102ce1ec058a8d36b0c34f49a394e2b9d302f4700d",
 			"license": "MIT",
 			"urls": [

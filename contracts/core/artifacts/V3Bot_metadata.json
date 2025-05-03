@@ -38,32 +38,6 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "amountIn",
-						"type": "uint256"
-					}
-				],
-				"name": "Swap0for1",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "amountIn",
-						"type": "uint256"
-					}
-				],
-				"name": "V3Swap1for0",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
 						"internalType": "address",
 						"name": "newAdmin",
 						"type": "address"
@@ -90,6 +64,19 @@
 			{
 				"inputs": [
 					{
+						"internalType": "int24",
+						"name": "newSpaceMultiplier",
+						"type": "int24"
+					}
+				],
+				"name": "_newSpaceMultiplier",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "address",
 						"name": "Token",
 						"type": "address"
@@ -104,38 +91,12 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "amount0ToMint",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "amount1ToMint",
+						"name": "token0Amount",
 						"type": "uint256"
 					}
 				],
 				"name": "addLiquidity",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint128",
-						"name": "liquidity",
-						"type": "uint128"
-					},
-					{
-						"internalType": "uint256",
-						"name": "amount0",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "amount1",
-						"type": "uint256"
-					}
-				],
+				"outputs": [],
 				"stateMutability": "payable",
 				"type": "function"
 			},
@@ -200,37 +161,34 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "operator",
-						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					},
-					{
-						"internalType": "bytes",
-						"name": "",
-						"type": "bytes"
-					}
-				],
-				"name": "onERC721Received",
+				"inputs": [],
+				"name": "getTicks",
 				"outputs": [
 					{
-						"internalType": "bytes4",
-						"name": "",
-						"type": "bytes4"
+						"internalType": "int24",
+						"name": "lowTick",
+						"type": "int24"
+					},
+					{
+						"internalType": "int24",
+						"name": "highTick",
+						"type": "int24"
 					}
 				],
-				"stateMutability": "nonpayable",
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "oracle",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -241,6 +199,19 @@
 						"internalType": "address",
 						"name": "",
 						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "spaceMultiplier",
+				"outputs": [
+					{
+						"internalType": "int24",
+						"name": "",
+						"type": "int24"
 					}
 				],
 				"stateMutability": "view",
@@ -284,29 +255,6 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "int256",
-						"name": "amount0Delta",
-						"type": "int256"
-					},
-					{
-						"internalType": "int256",
-						"name": "amount1Delta",
-						"type": "int256"
-					},
-					{
-						"internalType": "bytes",
-						"name": "",
-						"type": "bytes"
-					}
-				],
-				"name": "uniswapV3SwapCallback",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -322,7 +270,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/core/VeloBot.sol": "V3Bot"
+			"contracts/core/VeloDeposit.sol": "V3Bot"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -352,12 +300,12 @@
 				"dweb:/ipfs/QmYKKT5uccPQQSBT54wN2yZV5phs4kPYr76WvUerYiKbWp"
 			]
 		},
-		"contracts/core/VeloBot.sol": {
-			"keccak256": "0x30882af294cf04df00ad719c666eb5b3aaa410ade13feb8c74ab587b4c4f5616",
+		"contracts/core/VeloDeposit.sol": {
+			"keccak256": "0xfb75c6d85377fb4dac121ce93e665716f264442d792341cf0a7fb10bba1bbee1",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://a42c3597a0213a0ee96ddebf5dca99445bd1c63beddf12c7e7d5c5891a4f09d4",
-				"dweb:/ipfs/QmP7swmnUGuzYGhkG8K6k5PwUFv2uRYbHfj8iSJWqVWWUG"
+				"bzz-raw://9e0498550729d7c8a943d943ed154d57e410d0b5842c0f7a663ca80ecd4922f6",
+				"dweb:/ipfs/QmNZ3wKGiPj9G8duTe49QuSZ8mHpmS35e9ktbkxLin3P85"
 			]
 		},
 		"contracts/core/interfaces/ICLFactory.sol": {

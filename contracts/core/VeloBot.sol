@@ -156,6 +156,8 @@ function addLiquidity(uint256 amount0ToMint, uint256 amount1ToMint) external pay
         currenttick = (currenttick / tickSpacing) * tickSpacing;
         uint160 sqrtPriceX96A;
 
+        
+
     //Approve Tokens
         IERC20Minimal(token0).approve(farmNFT, amount0ToMint);
         IERC20Minimal(token1).approve(farmNFT, amount1ToMint);

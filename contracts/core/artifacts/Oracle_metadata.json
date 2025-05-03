@@ -23,6 +23,35 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "pool",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "usdAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "getAmountsforLiquidity",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount0",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount1",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -38,7 +67,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/core/VeloBot.sol": "Oracle"
+			"contracts/core/VeloDeposit.sol": "Oracle"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -68,12 +97,12 @@
 				"dweb:/ipfs/QmYKKT5uccPQQSBT54wN2yZV5phs4kPYr76WvUerYiKbWp"
 			]
 		},
-		"contracts/core/VeloBot.sol": {
-			"keccak256": "0x30882af294cf04df00ad719c666eb5b3aaa410ade13feb8c74ab587b4c4f5616",
+		"contracts/core/VeloDeposit.sol": {
+			"keccak256": "0xfb75c6d85377fb4dac121ce93e665716f264442d792341cf0a7fb10bba1bbee1",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://a42c3597a0213a0ee96ddebf5dca99445bd1c63beddf12c7e7d5c5891a4f09d4",
-				"dweb:/ipfs/QmP7swmnUGuzYGhkG8K6k5PwUFv2uRYbHfj8iSJWqVWWUG"
+				"bzz-raw://9e0498550729d7c8a943d943ed154d57e410d0b5842c0f7a663ca80ecd4922f6",
+				"dweb:/ipfs/QmNZ3wKGiPj9G8duTe49QuSZ8mHpmS35e9ktbkxLin3P85"
 			]
 		},
 		"contracts/core/interfaces/ICLFactory.sol": {
