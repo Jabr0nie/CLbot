@@ -43,35 +43,6 @@
 						"internalType": "address",
 						"name": "pool",
 						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "usdAmount",
-						"type": "uint256"
-					}
-				],
-				"name": "getAmountsforLiquidity",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "amount0",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "amount1",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "pool",
-						"type": "address"
 					}
 				],
 				"name": "getTicks",
@@ -112,7 +83,7 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": true,
+			"enabled": false,
 			"runs": 200
 		},
 		"remappings": []
@@ -135,11 +106,11 @@
 			]
 		},
 		"contracts/core/VeloOracle.sol": {
-			"keccak256": "0x1600a10dd4a813b59bfaeaba96b72249bb586b9dc4556b993669dd1bf4f741d9",
+			"keccak256": "0x1afa8932c2a35c6c38b1306b742d87105b2c1bfc07210f906fc6446a45514a7e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://e1e21be63d7381f845c87152d31cc6a366f0b4b9de5d149b03ffb4852a00632d",
-				"dweb:/ipfs/QmZtkhZ6k9ofdckBrQtVfMzbigvscaEzyiddzWWnynZppc"
+				"bzz-raw://bb6f511414afb14b05a7ca87e672e2fe9f3dbd1981d3f6c5392a1daf8714afe9",
+				"dweb:/ipfs/QmVZZPq1ofkmU3gAkoYw4YVmvND683AMEhvxWfipMoQrKG"
 			]
 		},
 		"contracts/core/interfaces/ICLPool.sol": {

@@ -53,6 +53,7 @@ contract V3Bot {
     address public token0; // token0 on Optimism
     address public token1; // token1 on Optimism
     address public farmNFT;
+    uint256 public tokenId;
     address public admin;
     int24 public tickSpacing;
     int24 public spaceMultiplier;
@@ -148,7 +149,7 @@ function addLiquidity(uint256 token0Amount) public payable {
             });
 
 
-        INonfungiblePositionManager(farmNFT).mint(params);
+        (tokenId, , , ) = INonfungiblePositionManager(farmNFT).mint(params);
 }
 
 }

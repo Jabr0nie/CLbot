@@ -1,0 +1,64 @@
+{
+  "name": "VeloOracle",
+  "address": "0x9d0cffe335a077851aa3d3fc37ec5f0605f0f649",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "pool",
+          "type": "address"
+        }
+      ],
+      "name": "GetPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "pool",
+          "type": "address"
+        }
+      ],
+      "name": "getTicks",
+      "outputs": [
+        {
+          "internalType": "int24",
+          "name": "lowTick",
+          "type": "int24"
+        },
+        {
+          "internalType": "int24",
+          "name": "highTick",
+          "type": "int24"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "V3Pool",
+      "outputs": [
+        {
+          "internalType": "contract ICLPoolDerivedState",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "filePath": "CLBot/contracts/core/VeloOracle.sol",
+  "pinnedAt": 1746290845619
+}

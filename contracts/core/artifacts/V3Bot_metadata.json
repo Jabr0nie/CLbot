@@ -255,6 +255,19 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "tokenId",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -278,7 +291,7 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": true,
+			"enabled": false,
 			"runs": 200
 		},
 		"remappings": []
@@ -301,11 +314,11 @@
 			]
 		},
 		"contracts/core/VeloDeposit.sol": {
-			"keccak256": "0xfb75c6d85377fb4dac121ce93e665716f264442d792341cf0a7fb10bba1bbee1",
+			"keccak256": "0x309abc919fb2626e6b3ea686b2ccb645800da24c01205a256f8283a2f415bf6c",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://9e0498550729d7c8a943d943ed154d57e410d0b5842c0f7a663ca80ecd4922f6",
-				"dweb:/ipfs/QmNZ3wKGiPj9G8duTe49QuSZ8mHpmS35e9ktbkxLin3P85"
+				"bzz-raw://f9b0c15a83a464a67dacac83030f3e2b79d6c1400e454dcf506381260efe1357",
+				"dweb:/ipfs/QmSmBxgXdapMuVxyu767iRgX1JCLsS5T5iLDFdqxjKYN3Q"
 			]
 		},
 		"contracts/core/interfaces/ICLFactory.sol": {
