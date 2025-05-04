@@ -91,7 +91,7 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "token0Amount",
+						"name": "amount0ToMint",
 						"type": "uint256"
 					}
 				],
@@ -314,11 +314,11 @@
 			]
 		},
 		"contracts/core/VeloDeposit.sol": {
-			"keccak256": "0x309abc919fb2626e6b3ea686b2ccb645800da24c01205a256f8283a2f415bf6c",
+			"keccak256": "0x2b92715f699ce562e4764fb0950f0d42ba46cfb6500ba692e3ae10e40e2b993a",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://f9b0c15a83a464a67dacac83030f3e2b79d6c1400e454dcf506381260efe1357",
-				"dweb:/ipfs/QmSmBxgXdapMuVxyu767iRgX1JCLsS5T5iLDFdqxjKYN3Q"
+				"bzz-raw://220c22062a3c397250696023a9439dc7e5c3130e8bba164b8b8e3a5044ab6f1a",
+				"dweb:/ipfs/QmW9GxSnjz9TrQ2J1wpXxz17ev9W9zGdQKDfHFS6FQSzkk"
 			]
 		},
 		"contracts/core/interfaces/ICLFactory.sol": {

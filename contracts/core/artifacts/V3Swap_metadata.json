@@ -311,11 +311,11 @@
 			]
 		},
 		"contracts/core/VeloSwapV3.sol": {
-			"keccak256": "0x0ee1f9412aee4296d1c42fd52b30171583e5a0bac1a9e965ab02539161ee1327",
+			"keccak256": "0xf6eabb16a995b2eab7fd41ddc06e791e9acc70585c315ac75512a01934480e8d",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://0a80bd213f71c5aac44e1f2e4ca8a70236196a995f6e8bb7d2fe076aee2b9738",
-				"dweb:/ipfs/QmRD8uE3VCHwN2yWK1FbGxq15KZSx3QYbaMzc2LqgPJu4r"
+				"bzz-raw://3f796bc4eda37d6ee6323786b8dc07689589dbe4d172d960a8a168d881448a97",
+				"dweb:/ipfs/QmRDKGCqnb42tY85RP2eMR41qDfc5esGSAQuhm8u8GB1Ab"
 			]
 		},
 		"contracts/core/interfaces/ICLFactory.sol": {

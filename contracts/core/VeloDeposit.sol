@@ -107,19 +107,23 @@ contract V3Bot {
         }
 
 
-function addLiquidity(uint256 token0Amount) public payable {
+function addLiquidity(uint256 amount0ToMint) public payable {
     // Approve the position manager
     (int24 tickLower,int24 tickUpper) = getTicks();
 
     // Get square root prices for ticks
-     uint160 sqrtPriceLower = TickMath.getSqrtRatioAtTick(tickLower);
+    //(, int24 tick, , , , ) = ICLPoolState(pool).slot0();
+   //uint160 currentSqrtPrice = TickMath.getSqrtRatioAtTick(tick);
+    uint160 sqrtPriceLower = TickMath.getSqrtRatioAtTick(tickLower);
     uint160 sqrtPriceUpper = TickMath.getSqrtRatioAtTick(tickUpper);
 
 
 
-    uint _liquidity = LiquidityAmounts.getLiquidityForAmount0(sqrtPriceLower, sqrtPriceUpper, token0Amount);
+    uint128 _liquidity = LiquidityAmounts.getLiquidityForAmount0(sqrtPriceLower, sqrtPriceUpper, amount0ToMint);
 
-    (uint amount0ToMint, uint amount1ToMint) = Oracle(oracle).getAmountsforLiquidity(pool, _liquidity);
+    uint amount1ToMint =  LiquidityAmounts.getAmount1ForLiquidity(sqrtPriceLower, sqrtPriceUpper, _liquidity);
+
+    //(uint amount0ToMint, uint amount1ToMint) = Oracle(oracle).getAmountsforLiquidity(pool, _liquidity); -- V2 Pools
 
     //Approve Tokens
         IERC20(token0).transferFrom(msg.sender, address(this), amount0ToMint);
@@ -129,8 +133,6 @@ function addLiquidity(uint256 token0Amount) public payable {
         IERC20(token1).approve(farmNFT, amount1ToMint);
 
     // Get current sqrtPriceX96 from the pool
-
-
 
         INonfungiblePositionManager.MintParams memory params =
             INonfungiblePositionManager.MintParams({
@@ -149,7 +151,12 @@ function addLiquidity(uint256 token0Amount) public payable {
             });
 
 
-        (tokenId, , , ) = INonfungiblePositionManager(farmNFT).mint(params);
+        INonfungiblePositionManager(farmNFT).mint(params);
+        uint sweep0 = IERC20(token0).balanceOf(address(this));
+        uint sweep1 = IERC20(token1).balanceOf(address(this));
+        IERC20Minimal(token0).transfer(msg.sender, sweep0);
+        IERC20Minimal(token1).transfer(msg.sender, sweep1);
+
 }
 
 }

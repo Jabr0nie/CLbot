@@ -1,0 +1,83 @@
+{
+  "name": "VeloOracle",
+  "address": "0xf129d15bb08e0ff7bc393cf15f22b943be88536e",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount0ToMint",
+          "type": "uint256"
+        }
+      ],
+      "name": "addLiquidity",
+      "outputs": [
+        {
+          "internalType": "uint128",
+          "name": "",
+          "type": "uint128"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "pool",
+          "type": "address"
+        }
+      ],
+      "name": "GetPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "pool",
+          "type": "address"
+        }
+      ],
+      "name": "getTicks",
+      "outputs": [
+        {
+          "internalType": "int24",
+          "name": "lowTick",
+          "type": "int24"
+        },
+        {
+          "internalType": "int24",
+          "name": "highTick",
+          "type": "int24"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "V3Pool",
+      "outputs": [
+        {
+          "internalType": "contract ICLPoolDerivedState",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "filePath": "CLBot/contracts/core/VeloOracle.sol",
+  "pinnedAt": 1746329161359
+}

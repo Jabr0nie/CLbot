@@ -40,6 +40,25 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint256",
+						"name": "amount0ToMint",
+						"type": "uint256"
+					}
+				],
+				"name": "addLiquidity",
+				"outputs": [
+					{
+						"internalType": "uint128",
+						"name": "",
+						"type": "uint128"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "address",
 						"name": "pool",
 						"type": "address"
@@ -106,11 +125,11 @@
 			]
 		},
 		"contracts/core/VeloOracle.sol": {
-			"keccak256": "0x1afa8932c2a35c6c38b1306b742d87105b2c1bfc07210f906fc6446a45514a7e",
+			"keccak256": "0x1a589d5383b69c688bdd1c5b8f0826d2504c74db97343a1f35f9aacda0a51ced",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://bb6f511414afb14b05a7ca87e672e2fe9f3dbd1981d3f6c5392a1daf8714afe9",
-				"dweb:/ipfs/QmVZZPq1ofkmU3gAkoYw4YVmvND683AMEhvxWfipMoQrKG"
+				"bzz-raw://3ef6fe1c1a88baa95a2f0ad8ea3ee810fa31799a33d4c0e6095f717cca8f6e1c",
+				"dweb:/ipfs/QmUumubXMYHmBZ4v88ebdPSMTbKpc3gSS8f1LVByTwP9ED"
 			]
 		},
 		"contracts/core/interfaces/ICLPool.sol": {

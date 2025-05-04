@@ -67,7 +67,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/core/VeloDeposit.sol": "Oracle"
+			"contracts/core/VeloSwapV3.sol": "Oracle"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -75,7 +75,7 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": false,
+			"enabled": true,
 			"runs": 200
 		},
 		"remappings": []
@@ -97,12 +97,12 @@
 				"dweb:/ipfs/QmYKKT5uccPQQSBT54wN2yZV5phs4kPYr76WvUerYiKbWp"
 			]
 		},
-		"contracts/core/VeloDeposit.sol": {
-			"keccak256": "0x309abc919fb2626e6b3ea686b2ccb645800da24c01205a256f8283a2f415bf6c",
+		"contracts/core/VeloSwapV3.sol": {
+			"keccak256": "0xf6eabb16a995b2eab7fd41ddc06e791e9acc70585c315ac75512a01934480e8d",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://f9b0c15a83a464a67dacac83030f3e2b79d6c1400e454dcf506381260efe1357",
-				"dweb:/ipfs/QmSmBxgXdapMuVxyu767iRgX1JCLsS5T5iLDFdqxjKYN3Q"
+				"bzz-raw://3f796bc4eda37d6ee6323786b8dc07689589dbe4d172d960a8a168d881448a97",
+				"dweb:/ipfs/QmRDKGCqnb42tY85RP2eMR41qDfc5esGSAQuhm8u8GB1Ab"
 			]
 		},
 		"contracts/core/interfaces/ICLFactory.sol": {

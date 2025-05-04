@@ -120,6 +120,8 @@ contract V3Swap is ICLSwapCallback {
     function Swap1for0(uint256 amountIn) public payable {
         require(amountIn > 0, "Invalid input amount");
 
+        IERC20(token1).transferFrom(msg.sender, address(this), amountIn);
+
         // Get current sqrtPriceX96 from the pool
         (uint160 sqrtPriceX96, , , , , ) = ICLPoolState(pool).slot0();
         uint160 sqrtPriceLimitX96 = uint160(sqrtPriceX96 * 101 / 100); // 1% slippage

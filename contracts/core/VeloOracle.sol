@@ -68,7 +68,7 @@ function GetPrice(address pool) public view returns (uint256 price) {
     return (price);
 }
 
-    function getTicks (address pool) public view returns (int24 lowTick, int24 highTick){
+function getTicks (address pool) public view returns (int24 lowTick, int24 highTick){
         int24 tickSpacing = ICLPoolConstants(pool).tickSpacing();
         (, int24 currentTick, , , , ) = ICLPool(pool).slot0();
         currentTick = (currentTick / tickSpacing) * tickSpacing;
@@ -77,36 +77,18 @@ function GetPrice(address pool) public view returns (uint256 price) {
         return (lowTick, highTick);
         }
 
- 
+address _pool = 0x7cfc2Da3ba598ef4De692905feDcA32565AB836E;
+function addLiquidity(uint256 amount0ToMint) public view returns (uint128) {
+    // Approve the position manager
+    (int24 tickLower,int24 tickUpper) = getTicks(_pool);
 
-function getAmount0ForLiquidity(uint160 sqrtRatioAX96, uint160 sqrtRatioBX96, uint128 liquidity)
-        internal
-        pure
-        returns (uint256 amount0)
-    {
-        if (sqrtRatioAX96 > sqrtRatioBX96) (sqrtRatioAX96, sqrtRatioBX96) = (sqrtRatioBX96, sqrtRatioAX96);
-
-        return FullMath.mulDiv(
-            uint256(liquidity) << FixedPoint96.RESOLUTION, sqrtRatioBX96 - sqrtRatioAX96, sqrtRatioBX96
-        ) / sqrtRatioAX96;
-    }
-
-    /// @notice Computes the amount of token1 for a given amount of liquidity and a price range
-    /// @param sqrtRatioAX96 A sqrt price representing the first tick boundary
-    /// @param sqrtRatioBX96 A sqrt price representing the second tick boundary
-    /// @param liquidity The liquidity being valued
-    /// @return amount1 The amount of token1
-    function getAmount1ForLiquidity(uint160 sqrtRatioAX96, uint160 sqrtRatioBX96, uint128 liquidity)
-        internal
-        pure
-        returns (uint256 amount1)
-    {
-        if (sqrtRatioAX96 > sqrtRatioBX96) (sqrtRatioAX96, sqrtRatioBX96) = (sqrtRatioBX96, sqrtRatioAX96);
-
-        return FullMath.mulDiv(liquidity, sqrtRatioBX96 - sqrtRatioAX96, FixedPoint96.Q96);
-    }
+    uint160 sqrtPriceLower = TickMath.getSqrtRatioAtTick(tickLower);
+    uint160 sqrtPriceUpper = TickMath.getSqrtRatioAtTick(tickUpper);
 
 
 
+    uint128 liquidity = LiquidityAmounts.getLiquidityForAmount0(sqrtPriceLower, sqrtPriceUpper, amount0ToMint);
 
+    return liquidity;
+}
 }
