@@ -24,7 +24,7 @@
 						"type": "uint256"
 					}
 				],
-				"name": "calculateLiquidityForUSD",
+				"name": "getLiquidityForAmounts",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -93,7 +93,7 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": true,
+			"enabled": false,
 			"runs": 200
 		},
 		"remappings": []
@@ -348,11 +348,11 @@
 			]
 		},
 		"contracts/core/veloex.sol": {
-			"keccak256": "0x7caa016af4c6baa963cc0d73329ddf946553bc1574f3dea78c3cf0dbcea18b71",
+			"keccak256": "0x86478d85cd6c3e46c107e108bfe00bfbf176a45f0bcbfcb60db106dc1f53f412",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://06ccbb203a09e1ca1e08b3c7034f971cff2d5a000b8ec976cf1959792af078bc",
-				"dweb:/ipfs/QmVmtGKD2QragvFbLuV5VnodcqK6b5cQoUvUtgWjCGXac1"
+				"bzz-raw://03799337b5fb57eaf31a717e3db9c192974321a67cbf17e9e66b8a844544eb6c",
+				"dweb:/ipfs/QmR6F9UBn9qRcb4D7QrYQFFCo94oadzbYG3kckHqN7cx7p"
 			]
 		},
 		"contracts/libraries/VelodromeTimeLibrary.sol": {

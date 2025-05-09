@@ -40,6 +40,7 @@ contract V3Bot is ICLSwapCallback {
     address public admin;
     int24 public tickSpacing;
 
+
     struct Deposit {
         address owner;
         uint128 liquidity;
@@ -49,7 +50,8 @@ contract V3Bot is ICLSwapCallback {
 
     mapping(uint256 => Deposit) public deposits;
 
-    event SwapExecuted(address indexed user, uint256 amountIn, uint256 amountOut);
+    uint256 public tokenID;
+
 
     constructor() {
         admin = msg.sender;
@@ -73,6 +75,15 @@ contract V3Bot is ICLSwapCallback {
         uint256 value = IERC20Minimal(Token).balanceOf(address(this));
         IERC20Minimal(Token).transfer(admin, value);
     }
+
+    function getTicks () public view returns (int24 lowTick, int24 highTick, int24 currentTick){
+        int24 tickSpacing = ICLPoolConstants(pool).tickSpacing();
+        (, currentTick, , , , ) = ICLPool(pool).slot0();
+        currentTick = (currentTick / tickSpacing) * tickSpacing;
+        lowTick = currentTick - tickSpacing;
+        highTick = currentTick + tickSpacing;
+        return (lowTick, highTick, currentTick);
+        }
 
     function Swap0for1(uint256 amountIn) external {
         require(amountIn > 0, "Invalid input amount");
@@ -154,7 +165,7 @@ function addLiquidity(uint256 amount0ToMint, uint256 amount1ToMint) external pay
     // Get current sqrtPriceX96 from the pool
         (uint160 sqrtPriceX96, int24 currenttick, , , , ) = ICLPoolState(pool).slot0();
         currenttick = (currenttick / tickSpacing) * tickSpacing;
-        uint160 sqrtPriceX96A;
+        int24 highTick = currenttick + tickSpacing;
 
         
 
@@ -167,22 +178,19 @@ function addLiquidity(uint256 amount0ToMint, uint256 amount1ToMint) external pay
                 token0: token0,
                 token1: token1,
                 tickSpacing: tickSpacing,
-                tickLower: TickMath.MIN_TICK, //add custom logic
-                tickUpper: TickMath.MAX_TICK, //add custom logic
+                tickLower: currenttick, //add custom logic
+                tickUpper: highTick, //add custom logic
                 amount0Desired: amount0ToMint,
                 amount1Desired: amount1ToMint,
                 amount0Min: 0,
                 amount1Min: 0,
-                recipient: address(this),
+                recipient: msg.sender,
                 deadline: block.timestamp,
                 sqrtPriceX96: sqrtPriceX96
             });
 
 
         (tokenId, liquidity, amount0, amount1) = INonfungiblePositionManager(farmNFT).mint(params);
-        
-
-        _createDeposit(address(this), tokenId);
 
 }
 
@@ -206,19 +214,4 @@ function addLiquidity(uint256 amount0ToMint, uint256 amount1ToMint) external pay
         deposits[tokenId] = Deposit({owner: owner, liquidity: liquidity, token0: _token0, token1: _token1});
     }
 
-        // Get current sqrtPriceX96 from the pool
-        function _checkLiquidity() external view returns (uint amount0, uint amount1){
-
-        (uint160 sqrtPriceX96, int24 currentTick, , , , ) = ICLPoolState(pool).slot0();
-        currentTick = (currentTick / tickSpacing) * tickSpacing;
-        int24 lowTick = currentTick - tickSpacing;
-        int24 highTick = currentTick + tickSpacing;
-        uint160 sqrtPriceX96A = TickMath.getSqrtRatioAtTick(lowTick);
-        uint160 sqrtPriceX96B = TickMath.getSqrtRatioAtTick(highTick);
-
-        //In procee = need to balance of this address for token0 and 1 and then...
- (uint liquidity) = getLiquidityForAmounts(sqrtRatioX96, sqrtRatioX96A, sqrtRatioX96B, amount0, amount1)
-    ) internal pure returns (uint128 liquidity)
-
-    }
 }

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.5.0;
+pragma solidity >=0.7.6;
 
 import "./interfaces/pool/ICLPoolDerivedState.sol";
 import "./libraries/LowGasSafeMath.sol";
@@ -68,19 +68,19 @@ function GetPrice(address pool) public view returns (uint256 price) {
     return (price);
 }
 
-function getTicks (address pool) public view returns (int24 lowTick, int24 highTick){
+function getTicks (address pool) public view returns (int24 lowTick, int24 highTick, int24 currentTick){
         int24 tickSpacing = ICLPoolConstants(pool).tickSpacing();
-        (, int24 currentTick, , , , ) = ICLPool(pool).slot0();
+        (, currentTick, , , , ) = ICLPool(pool).slot0();
         currentTick = (currentTick / tickSpacing) * tickSpacing;
         lowTick = currentTick - tickSpacing;
         highTick = currentTick + tickSpacing;
-        return (lowTick, highTick);
+        return (lowTick, highTick, currentTick);
         }
 
 address _pool = 0x7cfc2Da3ba598ef4De692905feDcA32565AB836E;
 function addLiquidity(uint256 amount0ToMint) public view returns (uint128) {
     // Approve the position manager
-    (int24 tickLower,int24 tickUpper) = getTicks(_pool);
+    (int24 tickLower,int24 tickUpper,) = getTicks(_pool);
 
     uint160 sqrtPriceLower = TickMath.getSqrtRatioAtTick(tickLower);
     uint160 sqrtPriceUpper = TickMath.getSqrtRatioAtTick(tickUpper);

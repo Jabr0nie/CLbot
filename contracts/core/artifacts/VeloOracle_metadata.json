@@ -75,6 +75,11 @@
 						"internalType": "int24",
 						"name": "highTick",
 						"type": "int24"
+					},
+					{
+						"internalType": "int24",
+						"name": "currentTick",
+						"type": "int24"
 					}
 				],
 				"stateMutability": "view",
@@ -96,7 +101,7 @@
 		"compilationTarget": {
 			"contracts/core/VeloOracle.sol": "VeloOracle"
 		},
-		"evmVersion": "istanbul",
+		"evmVersion": "berlin",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -125,11 +130,11 @@
 			]
 		},
 		"contracts/core/VeloOracle.sol": {
-			"keccak256": "0x1a589d5383b69c688bdd1c5b8f0826d2504c74db97343a1f35f9aacda0a51ced",
+			"keccak256": "0x935c92925b2a702a7b84c64c515d4bfd9a85db57f4ba2a72d8978ada482b75e6",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://3ef6fe1c1a88baa95a2f0ad8ea3ee810fa31799a33d4c0e6095f717cca8f6e1c",
-				"dweb:/ipfs/QmUumubXMYHmBZ4v88ebdPSMTbKpc3gSS8f1LVByTwP9ED"
+				"bzz-raw://5ec6704303aba9e0adf352d0bfdbbc2894a025d91403a8531ece68b0e97366ea",
+				"dweb:/ipfs/QmXrYH4H3ULt7HL27V2JTBWKyFV2bKzEch4KSYQYdYCro2"
 			]
 		},
 		"contracts/core/interfaces/ICLPool.sol": {
