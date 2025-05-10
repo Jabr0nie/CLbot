@@ -1,0 +1,222 @@
+{
+	"compiler": {
+		"version": "0.7.6+commit.7338295f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "notifyAdmin",
+						"type": "address"
+					}
+				],
+				"name": "SetNotifyAdmin",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_forwarder",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_pool",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_feesVotingReward",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_rewardToken",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "_isPool",
+						"type": "bool"
+					}
+				],
+				"name": "createGauge",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "implementation",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "nft",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "notifyAdmin",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_nft",
+						"type": "address"
+					}
+				],
+				"name": "setNonfungiblePositionManager",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_admin",
+						"type": "address"
+					}
+				],
+				"name": "setNotifyAdmin",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "voter",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"createGauge(address,address,address,address,bool)": {
+					"params": {
+						"_feesVotingReward": "The address of the feesVotingReward contract",
+						"_forwarder": "The address of the forwarder contract",
+						"_isPool": "Whether the attached pool is a real pool or not",
+						"_pool": "The address of the pool",
+						"_rewardToken": "The address of the reward token"
+					},
+					"returns": {
+						"_0": "The address of the created gauge"
+					}
+				},
+				"setNonfungiblePositionManager(address)": {
+					"details": "Callable once only on initialize",
+					"params": {
+						"_nft": "The nonfungible position manager that will manage positions for this Factory"
+					}
+				},
+				"setNotifyAdmin(address)": {
+					"params": {
+						"_admin": "New administrator that will be able to call `notifyRewardWithoutClaim` on gauges."
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"createGauge(address,address,address,address,bool)": {
+					"notice": "Called by the voter contract via factory.createPool"
+				},
+				"implementation()": {
+					"notice": "Address of the gauge implementation contract"
+				},
+				"nft()": {
+					"notice": "Address of the NonfungiblePositionManager used to create nfts that gauges will accept"
+				},
+				"notifyAdmin()": {
+					"notice": "Administrator that can call `notifyRewardWithoutClaim` on gauges"
+				},
+				"setNonfungiblePositionManager(address)": {
+					"notice": "Set Nonfungible Position Manager"
+				},
+				"setNotifyAdmin(address)": {
+					"notice": "Set notifyAdmin value on gauge factory"
+				},
+				"voter()": {
+					"notice": "Address of the voter contract"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/gauge/interfaces/ICLGaugeFactory.sol": "ICLGaugeFactory"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/gauge/interfaces/ICLGaugeFactory.sol": {
+			"keccak256": "0x62d81f06185b70fc1908108543fdc44cee349b480b547690b1a6aa8930ed393b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://a01fc8c7838d9e482e866d1e7bc94f0d657038547db77db5fc52d40793fee8c3",
+				"dweb:/ipfs/QmR5UMCx55oyLhZ3RJ9QFigVgHfdsR4uSjJtkbubMakyMX"
+			]
+		}
+	},
+	"version": 1
+}

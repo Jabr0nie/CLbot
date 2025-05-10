@@ -215,7 +215,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/core/VeloDeposit.sol": "IERC20"
+			"contracts/core/VeloStake.sol": "IERC20"
 		},
 		"evmVersion": "berlin",
 		"libraries": {},
@@ -229,12 +229,20 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/core/IERC721.sol": {
-			"keccak256": "0xa5d0054dd7767bd5a6b897102ce1ec058a8d36b0c34f49a394e2b9d302f4700d",
+		"@openzeppelin/contracts/token/ERC721/ERC721Holder.sol": {
+			"keccak256": "0xdb2133d55b8f3a94313af8f4371ae0501a58e412d471b03d8581214c5ea2ce33",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://852f1c467f89daa70d729231e543b11c47e2f125202ed123fe9ac9410868fd64",
-				"dweb:/ipfs/QmeaFw32FQ9QAXen9EKZkafK4jfXogcEGex4R446DQjJ5i"
+				"bzz-raw://cea1e4bf769f27c8c9c1442f1518b49ef6c8b71a4bd4ce88353da9e9a8ba1704",
+				"dweb:/ipfs/QmR1b8sj7fxgeHqDksV4GYTjZS1qajWC3yg9VCMUJus2bF"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol": {
+			"keccak256": "0xd03561349430ee87f356fb47017ebe9137fd8aab8380e7a1c3b270c7fba62376",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e747e57851bbd7685566623148b778542e0280aa0f8a8fe0ba54b4c6127f5d65",
+				"dweb:/ipfs/QmScpCryhDC3Ag12jgn6sCvrYvEQ3qeapxbcfuv1oRE4B2"
 			]
 		},
 		"contracts/core/INonfungiblePositionManager.sol": {
@@ -245,12 +253,12 @@
 				"dweb:/ipfs/QmYKKT5uccPQQSBT54wN2yZV5phs4kPYr76WvUerYiKbWp"
 			]
 		},
-		"contracts/core/VeloDeposit.sol": {
-			"keccak256": "0x2b92715f699ce562e4764fb0950f0d42ba46cfb6500ba692e3ae10e40e2b993a",
+		"contracts/core/VeloStake.sol": {
+			"keccak256": "0x3e2baa012a3b0975e1820fc4a1be113422631c4885b360b5a1c3bcfe09b1f11b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://220c22062a3c397250696023a9439dc7e5c3130e8bba164b8b8e3a5044ab6f1a",
-				"dweb:/ipfs/QmW9GxSnjz9TrQ2J1wpXxz17ev9W9zGdQKDfHFS6FQSzkk"
+				"bzz-raw://a57b925bf793d34da5297305b963f56867ac55f09d789b27f914559041bfa7ca",
+				"dweb:/ipfs/QmaxEaweUjoWBtWKGgbRRvo47nzk2eWoer1EH4cKJkBwGN"
 			]
 		},
 		"contracts/core/interfaces/ICLFactory.sol": {

@@ -696,9 +696,9 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/core/INFTPositionManager.sol": "INonfungiblePositionManager"
+			"contracts/core/INonfungiblePositionManager.sol": "INonfungiblePositionManager"
 		},
-		"evmVersion": "istanbul",
+		"evmVersion": "berlin",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -710,7 +710,7 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/core/INFTPositionManager.sol": {
+		"contracts/core/INonfungiblePositionManager.sol": {
 			"keccak256": "0xfe7d9ee66050cd945f09f5a54bada3d8eb3b024aedc37b9c521703c61e3ac892",
 			"license": "GPL-2.0-or-later",
 			"urls": [

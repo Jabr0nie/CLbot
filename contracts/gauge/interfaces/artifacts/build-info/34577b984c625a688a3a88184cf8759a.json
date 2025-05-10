@@ -1,0 +1,916 @@
+{
+	"id": "34577b984c625a688a3a88184cf8759a",
+	"_format": "hh-sol-build-info-1",
+	"solcVersion": "0.7.6",
+	"solcLongVersion": "0.7.6+commit.7338295f",
+	"input": {
+		"language": "Solidity",
+		"sources": {
+			"contracts/gauge/interfaces/ICLGaugeFactory.sol": {
+				"content": "// SPDX-License-Identifier: MIT\npragma solidity =0.7.6;\n\ninterface ICLGaugeFactory {\n    event SetNotifyAdmin(address indexed notifyAdmin);\n\n    /// @notice Address of the voter contract\n    function voter() external view returns (address);\n\n    /// @notice Address of the gauge implementation contract\n    function implementation() external view returns (address);\n\n    /// @notice Address of the NonfungiblePositionManager used to create nfts that gauges will accept\n    function nft() external view returns (address);\n\n    /// @notice Administrator that can call `notifyRewardWithoutClaim` on gauges\n    function notifyAdmin() external view returns (address);\n\n    /// @notice Set Nonfungible Position Manager\n    /// @dev Callable once only on initialize\n    /// @param _nft The nonfungible position manager that will manage positions for this Factory\n    function setNonfungiblePositionManager(address _nft) external;\n\n    /// @notice Set notifyAdmin value on gauge factory\n    /// @param _admin New administrator that will be able to call `notifyRewardWithoutClaim` on gauges.\n    function setNotifyAdmin(address _admin) external;\n\n    /// @notice Called by the voter contract via factory.createPool\n    /// @param _forwarder The address of the forwarder contract\n    /// @param _pool The address of the pool\n    /// @param _feesVotingReward The address of the feesVotingReward contract\n    /// @param _rewardToken The address of the reward token\n    /// @param _isPool Whether the attached pool is a real pool or not\n    /// @return The address of the created gauge\n    function createGauge(\n        address _forwarder,\n        address _pool,\n        address _feesVotingReward,\n        address _rewardToken,\n        bool _isPool\n    ) external returns (address);\n}\n"
+			}
+		},
+		"settings": {
+			"optimizer": {
+				"enabled": true,
+				"runs": 200
+			},
+			"outputSelection": {
+				"*": {
+					"": [
+						"ast"
+					],
+					"*": [
+						"abi",
+						"metadata",
+						"devdoc",
+						"userdoc",
+						"storageLayout",
+						"evm.legacyAssembly",
+						"evm.bytecode",
+						"evm.deployedBytecode",
+						"evm.methodIdentifiers",
+						"evm.gasEstimates",
+						"evm.assembly"
+					]
+				}
+			},
+			"remappings": [],
+			"evmVersion": "berlin"
+		}
+	},
+	"output": {
+		"contracts": {
+			"contracts/gauge/interfaces/ICLGaugeFactory.sol": {
+				"ICLGaugeFactory": {
+					"abi": [
+						{
+							"anonymous": false,
+							"inputs": [
+								{
+									"indexed": true,
+									"internalType": "address",
+									"name": "notifyAdmin",
+									"type": "address"
+								}
+							],
+							"name": "SetNotifyAdmin",
+							"type": "event"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "address",
+									"name": "_forwarder",
+									"type": "address"
+								},
+								{
+									"internalType": "address",
+									"name": "_pool",
+									"type": "address"
+								},
+								{
+									"internalType": "address",
+									"name": "_feesVotingReward",
+									"type": "address"
+								},
+								{
+									"internalType": "address",
+									"name": "_rewardToken",
+									"type": "address"
+								},
+								{
+									"internalType": "bool",
+									"name": "_isPool",
+									"type": "bool"
+								}
+							],
+							"name": "createGauge",
+							"outputs": [
+								{
+									"internalType": "address",
+									"name": "",
+									"type": "address"
+								}
+							],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [],
+							"name": "implementation",
+							"outputs": [
+								{
+									"internalType": "address",
+									"name": "",
+									"type": "address"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [],
+							"name": "nft",
+							"outputs": [
+								{
+									"internalType": "address",
+									"name": "",
+									"type": "address"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [],
+							"name": "notifyAdmin",
+							"outputs": [
+								{
+									"internalType": "address",
+									"name": "",
+									"type": "address"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "address",
+									"name": "_nft",
+									"type": "address"
+								}
+							],
+							"name": "setNonfungiblePositionManager",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "address",
+									"name": "_admin",
+									"type": "address"
+								}
+							],
+							"name": "setNotifyAdmin",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [],
+							"name": "voter",
+							"outputs": [
+								{
+									"internalType": "address",
+									"name": "",
+									"type": "address"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						}
+					],
+					"devdoc": {
+						"kind": "dev",
+						"methods": {
+							"createGauge(address,address,address,address,bool)": {
+								"params": {
+									"_feesVotingReward": "The address of the feesVotingReward contract",
+									"_forwarder": "The address of the forwarder contract",
+									"_isPool": "Whether the attached pool is a real pool or not",
+									"_pool": "The address of the pool",
+									"_rewardToken": "The address of the reward token"
+								},
+								"returns": {
+									"_0": "The address of the created gauge"
+								}
+							},
+							"setNonfungiblePositionManager(address)": {
+								"details": "Callable once only on initialize",
+								"params": {
+									"_nft": "The nonfungible position manager that will manage positions for this Factory"
+								}
+							},
+							"setNotifyAdmin(address)": {
+								"params": {
+									"_admin": "New administrator that will be able to call `notifyRewardWithoutClaim` on gauges."
+								}
+							}
+						},
+						"version": 1
+					},
+					"evm": {
+						"assembly": "",
+						"bytecode": {
+							"generatedSources": [],
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"deployedBytecode": {
+							"generatedSources": [],
+							"immutableReferences": {},
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"gasEstimates": null,
+						"legacyAssembly": null,
+						"methodIdentifiers": {
+							"createGauge(address,address,address,address,bool)": "8a983e54",
+							"implementation()": "5c60da1b",
+							"nft()": "47ccca02",
+							"notifyAdmin()": "447595b4",
+							"setNonfungiblePositionManager(address)": "cb8451ef",
+							"setNotifyAdmin(address)": "aca40f41",
+							"voter()": "46c96aac"
+						}
+					},
+					"metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"notifyAdmin\",\"type\":\"address\"}],\"name\":\"SetNotifyAdmin\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_forwarder\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_pool\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_feesVotingReward\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_rewardToken\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"_isPool\",\"type\":\"bool\"}],\"name\":\"createGauge\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"implementation\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"nft\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"notifyAdmin\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_nft\",\"type\":\"address\"}],\"name\":\"setNonfungiblePositionManager\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_admin\",\"type\":\"address\"}],\"name\":\"setNotifyAdmin\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"voter\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"createGauge(address,address,address,address,bool)\":{\"params\":{\"_feesVotingReward\":\"The address of the feesVotingReward contract\",\"_forwarder\":\"The address of the forwarder contract\",\"_isPool\":\"Whether the attached pool is a real pool or not\",\"_pool\":\"The address of the pool\",\"_rewardToken\":\"The address of the reward token\"},\"returns\":{\"_0\":\"The address of the created gauge\"}},\"setNonfungiblePositionManager(address)\":{\"details\":\"Callable once only on initialize\",\"params\":{\"_nft\":\"The nonfungible position manager that will manage positions for this Factory\"}},\"setNotifyAdmin(address)\":{\"params\":{\"_admin\":\"New administrator that will be able to call `notifyRewardWithoutClaim` on gauges.\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"createGauge(address,address,address,address,bool)\":{\"notice\":\"Called by the voter contract via factory.createPool\"},\"implementation()\":{\"notice\":\"Address of the gauge implementation contract\"},\"nft()\":{\"notice\":\"Address of the NonfungiblePositionManager used to create nfts that gauges will accept\"},\"notifyAdmin()\":{\"notice\":\"Administrator that can call `notifyRewardWithoutClaim` on gauges\"},\"setNonfungiblePositionManager(address)\":{\"notice\":\"Set Nonfungible Position Manager\"},\"setNotifyAdmin(address)\":{\"notice\":\"Set notifyAdmin value on gauge factory\"},\"voter()\":{\"notice\":\"Address of the voter contract\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/gauge/interfaces/ICLGaugeFactory.sol\":\"ICLGaugeFactory\"},\"evmVersion\":\"berlin\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/gauge/interfaces/ICLGaugeFactory.sol\":{\"keccak256\":\"0x62d81f06185b70fc1908108543fdc44cee349b480b547690b1a6aa8930ed393b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a01fc8c7838d9e482e866d1e7bc94f0d657038547db77db5fc52d40793fee8c3\",\"dweb:/ipfs/QmR5UMCx55oyLhZ3RJ9QFigVgHfdsR4uSjJtkbubMakyMX\"]}},\"version\":1}",
+					"storageLayout": {
+						"storage": [],
+						"types": null
+					},
+					"userdoc": {
+						"kind": "user",
+						"methods": {
+							"createGauge(address,address,address,address,bool)": {
+								"notice": "Called by the voter contract via factory.createPool"
+							},
+							"implementation()": {
+								"notice": "Address of the gauge implementation contract"
+							},
+							"nft()": {
+								"notice": "Address of the NonfungiblePositionManager used to create nfts that gauges will accept"
+							},
+							"notifyAdmin()": {
+								"notice": "Administrator that can call `notifyRewardWithoutClaim` on gauges"
+							},
+							"setNonfungiblePositionManager(address)": {
+								"notice": "Set Nonfungible Position Manager"
+							},
+							"setNotifyAdmin(address)": {
+								"notice": "Set notifyAdmin value on gauge factory"
+							},
+							"voter()": {
+								"notice": "Address of the voter contract"
+							}
+						},
+						"version": 1
+					}
+				}
+			}
+		},
+		"sources": {
+			"contracts/gauge/interfaces/ICLGaugeFactory.sol": {
+				"ast": {
+					"absolutePath": "contracts/gauge/interfaces/ICLGaugeFactory.sol",
+					"exportedSymbols": {
+						"ICLGaugeFactory": [
+							58
+						]
+					},
+					"id": 59,
+					"license": "MIT",
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"id": 1,
+							"literals": [
+								"solidity",
+								"=",
+								"0.7",
+								".6"
+							],
+							"nodeType": "PragmaDirective",
+							"src": "32:23:0"
+						},
+						{
+							"abstract": false,
+							"baseContracts": [],
+							"contractDependencies": [],
+							"contractKind": "interface",
+							"fullyImplemented": false,
+							"id": 58,
+							"linearizedBaseContracts": [
+								58
+							],
+							"name": "ICLGaugeFactory",
+							"nodeType": "ContractDefinition",
+							"nodes": [
+								{
+									"anonymous": false,
+									"id": 5,
+									"name": "SetNotifyAdmin",
+									"nodeType": "EventDefinition",
+									"parameters": {
+										"id": 4,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 3,
+												"indexed": true,
+												"mutability": "mutable",
+												"name": "notifyAdmin",
+												"nodeType": "VariableDeclaration",
+												"scope": 5,
+												"src": "110:27:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 2,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "110:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "109:29:0"
+									},
+									"src": "89:50:0"
+								},
+								{
+									"documentation": {
+										"id": 6,
+										"nodeType": "StructuredDocumentation",
+										"src": "145:41:0",
+										"text": "@notice Address of the voter contract"
+									},
+									"functionSelector": "46c96aac",
+									"id": 11,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "voter",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 7,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "205:2:0"
+									},
+									"returnParameters": {
+										"id": 10,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 9,
+												"mutability": "mutable",
+												"name": "",
+												"nodeType": "VariableDeclaration",
+												"scope": 11,
+												"src": "231:7:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 8,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "231:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "230:9:0"
+									},
+									"scope": 58,
+									"src": "191:49:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 12,
+										"nodeType": "StructuredDocumentation",
+										"src": "246:56:0",
+										"text": "@notice Address of the gauge implementation contract"
+									},
+									"functionSelector": "5c60da1b",
+									"id": 17,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "implementation",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 13,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "330:2:0"
+									},
+									"returnParameters": {
+										"id": 16,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 15,
+												"mutability": "mutable",
+												"name": "",
+												"nodeType": "VariableDeclaration",
+												"scope": 17,
+												"src": "356:7:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 14,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "356:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "355:9:0"
+									},
+									"scope": 58,
+									"src": "307:58:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 18,
+										"nodeType": "StructuredDocumentation",
+										"src": "371:97:0",
+										"text": "@notice Address of the NonfungiblePositionManager used to create nfts that gauges will accept"
+									},
+									"functionSelector": "47ccca02",
+									"id": 23,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "nft",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 19,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "485:2:0"
+									},
+									"returnParameters": {
+										"id": 22,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 21,
+												"mutability": "mutable",
+												"name": "",
+												"nodeType": "VariableDeclaration",
+												"scope": 23,
+												"src": "511:7:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 20,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "511:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "510:9:0"
+									},
+									"scope": 58,
+									"src": "473:47:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 24,
+										"nodeType": "StructuredDocumentation",
+										"src": "526:76:0",
+										"text": "@notice Administrator that can call `notifyRewardWithoutClaim` on gauges"
+									},
+									"functionSelector": "447595b4",
+									"id": 29,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "notifyAdmin",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 25,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "627:2:0"
+									},
+									"returnParameters": {
+										"id": 28,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 27,
+												"mutability": "mutable",
+												"name": "",
+												"nodeType": "VariableDeclaration",
+												"scope": 29,
+												"src": "653:7:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 26,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "653:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "652:9:0"
+									},
+									"scope": 58,
+									"src": "607:55:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 30,
+										"nodeType": "StructuredDocumentation",
+										"src": "668:187:0",
+										"text": "@notice Set Nonfungible Position Manager\n @dev Callable once only on initialize\n @param _nft The nonfungible position manager that will manage positions for this Factory"
+									},
+									"functionSelector": "cb8451ef",
+									"id": 35,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "setNonfungiblePositionManager",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 33,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 32,
+												"mutability": "mutable",
+												"name": "_nft",
+												"nodeType": "VariableDeclaration",
+												"scope": 35,
+												"src": "899:12:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 31,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "899:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "898:14:0"
+									},
+									"returnParameters": {
+										"id": 34,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "921:0:0"
+									},
+									"scope": 58,
+									"src": "860:62:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 36,
+										"nodeType": "StructuredDocumentation",
+										"src": "928:154:0",
+										"text": "@notice Set notifyAdmin value on gauge factory\n @param _admin New administrator that will be able to call `notifyRewardWithoutClaim` on gauges."
+									},
+									"functionSelector": "aca40f41",
+									"id": 41,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "setNotifyAdmin",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 39,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 38,
+												"mutability": "mutable",
+												"name": "_admin",
+												"nodeType": "VariableDeclaration",
+												"scope": 41,
+												"src": "1111:14:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 37,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "1111:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1110:16:0"
+									},
+									"returnParameters": {
+										"id": 40,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "1135:0:0"
+									},
+									"scope": 58,
+									"src": "1087:49:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 42,
+										"nodeType": "StructuredDocumentation",
+										"src": "1142:430:0",
+										"text": "@notice Called by the voter contract via factory.createPool\n @param _forwarder The address of the forwarder contract\n @param _pool The address of the pool\n @param _feesVotingReward The address of the feesVotingReward contract\n @param _rewardToken The address of the reward token\n @param _isPool Whether the attached pool is a real pool or not\n @return The address of the created gauge"
+									},
+									"functionSelector": "8a983e54",
+									"id": 57,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "createGauge",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 53,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 44,
+												"mutability": "mutable",
+												"name": "_forwarder",
+												"nodeType": "VariableDeclaration",
+												"scope": 57,
+												"src": "1607:18:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 43,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "1607:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 46,
+												"mutability": "mutable",
+												"name": "_pool",
+												"nodeType": "VariableDeclaration",
+												"scope": 57,
+												"src": "1635:13:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 45,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "1635:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 48,
+												"mutability": "mutable",
+												"name": "_feesVotingReward",
+												"nodeType": "VariableDeclaration",
+												"scope": 57,
+												"src": "1658:25:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 47,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "1658:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 50,
+												"mutability": "mutable",
+												"name": "_rewardToken",
+												"nodeType": "VariableDeclaration",
+												"scope": 57,
+												"src": "1693:20:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 49,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "1693:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 52,
+												"mutability": "mutable",
+												"name": "_isPool",
+												"nodeType": "VariableDeclaration",
+												"scope": 57,
+												"src": "1723:12:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bool",
+													"typeString": "bool"
+												},
+												"typeName": {
+													"id": 51,
+													"name": "bool",
+													"nodeType": "ElementaryTypeName",
+													"src": "1723:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bool",
+														"typeString": "bool"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1597:144:0"
+									},
+									"returnParameters": {
+										"id": 56,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 55,
+												"mutability": "mutable",
+												"name": "",
+												"nodeType": "VariableDeclaration",
+												"scope": 57,
+												"src": "1760:7:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 54,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "1760:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1759:9:0"
+									},
+									"scope": 58,
+									"src": "1577:192:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								}
+							],
+							"scope": 59,
+							"src": "57:1714:0"
+						}
+					],
+					"src": "32:1740:0"
+				},
+				"id": 0
+			}
+		}
+	}
+}
