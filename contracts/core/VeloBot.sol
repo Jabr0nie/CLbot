@@ -375,7 +375,7 @@ function addLiquidity() public payable returns(uint256) {
 
     function UpdatePosition() public payable {
         bool inRange = checkFarm();
-        if (inRange = true) {
+        if (inRange == true) {
             return;
         }
         withdraw();
