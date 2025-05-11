@@ -141,8 +141,32 @@ contract V3BotStaking is ERC721Holder{
     }
 
 
-    function withdraw() public payable {
-        ICLGauge(0xC8c7b5aE61d97Be7d02d606629059487066DC9CF).withdraw(tokenId);
+    function withdraw(uint256 _token) public payable {
+        ICLGauge(0xC8c7b5aE61d97Be7d02d606629059487066DC9CF).withdraw(_token);
+    }
+
+function liquidityCurrent() public view returns(uint128){
+    (, , , , , , , uint128 liquidity, , , , ) = INonfungiblePositionManager(0x416b433906b1B72FA758e166e239c43d68dC6F29).positions(tokenId);
+    return (liquidity);
+}
+
+
+    function removeLP() public payable {
+
+(, , , , , , , uint128 liquidity, , , , ) = INonfungiblePositionManager(0x416b433906b1B72FA758e166e239c43d68dC6F29).positions(tokenId);
+
+        INonfungiblePositionManager.DecreaseLiquidityParams memory params =
+            INonfungiblePositionManager.DecreaseLiquidityParams({
+                tokenId: tokenId,
+                liquidity: liquidity,
+                amount0Min: 0,
+                amount1Min: 0,
+                deadline: block.timestamp + 1500000
+
+            });
+
+
+        INonfungiblePositionManager(0x416b433906b1B72FA758e166e239c43d68dC6F29).decreaseLiquidity(params);
     }
 
     function sendNFTBack() public payable {
@@ -153,9 +177,5 @@ contract V3BotStaking is ERC721Holder{
         uint256 value = IERC20Minimal(Token).balanceOf(address(this));
         IERC20Minimal(Token).transfer(admin, value);
     }
-
-    
-
-
 
 }

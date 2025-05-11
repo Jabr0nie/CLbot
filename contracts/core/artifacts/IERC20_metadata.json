@@ -215,7 +215,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/core/VeloStake.sol": "IERC20"
+			"contracts/core/VeloBot.sol": "IERC20"
 		},
 		"evmVersion": "berlin",
 		"libraries": {},
@@ -253,12 +253,12 @@
 				"dweb:/ipfs/QmYKKT5uccPQQSBT54wN2yZV5phs4kPYr76WvUerYiKbWp"
 			]
 		},
-		"contracts/core/VeloStake.sol": {
-			"keccak256": "0x3e2baa012a3b0975e1820fc4a1be113422631c4885b360b5a1c3bcfe09b1f11b",
+		"contracts/core/VeloBot.sol": {
+			"keccak256": "0xbb2750fc067b084c3e79b4bc1cc651ebe637d5497d65567faa450030e4e524a4",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://a57b925bf793d34da5297305b963f56867ac55f09d789b27f914559041bfa7ca",
-				"dweb:/ipfs/QmaxEaweUjoWBtWKGgbRRvo47nzk2eWoer1EH4cKJkBwGN"
+				"bzz-raw://059cbf23faf1735fe368164c17f1d2d6076c731ed48ec12f2e4bd195bf16eb27",
+				"dweb:/ipfs/Qmba4LQZ4gsJsVn2BPY4VvaiSS1MbM5SiM2UNaKyZhh9NX"
 			]
 		},
 		"contracts/core/interfaces/ICLFactory.sol": {

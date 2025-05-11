@@ -110,6 +110,19 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "liquidityCurrent",
+				"outputs": [
+					{
+						"internalType": "uint128",
+						"name": "",
+						"type": "uint128"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -167,6 +180,13 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "removeLP",
+				"outputs": [],
+				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
@@ -249,7 +269,13 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_token",
+						"type": "uint256"
+					}
+				],
 				"name": "withdraw",
 				"outputs": [],
 				"stateMutability": "payable",
@@ -317,11 +343,11 @@
 			]
 		},
 		"contracts/core/VeloStake.sol": {
-			"keccak256": "0x3e2baa012a3b0975e1820fc4a1be113422631c4885b360b5a1c3bcfe09b1f11b",
+			"keccak256": "0x95f919b392dcbe466b1acd1fc84ca8f21ad321f04365b70f5671cdac6fdde935",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://a57b925bf793d34da5297305b963f56867ac55f09d789b27f914559041bfa7ca",
-				"dweb:/ipfs/QmaxEaweUjoWBtWKGgbRRvo47nzk2eWoer1EH4cKJkBwGN"
+				"bzz-raw://44a20db847bccff8e4a0b9a298a19c24aabed4cc2859246b72da98d58cab0249",
+				"dweb:/ipfs/QmYu35HFiYYLEMQYzHVpa6fsDiSf7kJrDG4dqrDhSREGCk"
 			]
 		},
 		"contracts/core/interfaces/ICLFactory.sol": {

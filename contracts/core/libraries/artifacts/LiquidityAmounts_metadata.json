@@ -1,0 +1,63 @@
+{
+	"compiler": {
+		"version": "0.7.6+commit.7338295f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"title": "Liquidity amount functions",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"notice": "Provides functions for computing liquidity amounts from token amounts and prices",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/core/libraries/LiquidityAmounts.sol": "LiquidityAmounts"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/core/libraries/FixedPoint96.sol": {
+			"keccak256": "0x0ba8a9b95a956a4050749c0158e928398c447c91469682ca8a7cc7e77a7fe032",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://186d3b528866065a5856f96d2aeec698efa99f8da913e9adf34f8cc296cc993d",
+				"dweb:/ipfs/QmUAiMvtAQp8c9dy57bqJYzG7hkb1uChiPaQmt264skoqP"
+			]
+		},
+		"contracts/core/libraries/FullMath.sol": {
+			"keccak256": "0x5340256039418f5d03512a44173d3dcf1da277a73a461e06fb5668f49cfc46f1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://75dee99795d1125875233a7f1d356935099cc97b4085c0e451060d77db85d144",
+				"dweb:/ipfs/QmTGqyrxVLQd8TBaarqSQDiYvq1QFutCdmTyXk6JpxzKTN"
+			]
+		},
+		"contracts/core/libraries/LiquidityAmounts.sol": {
+			"keccak256": "0xae7f7b0bbbd864bc1761ec5eac62ec761f2ef168d32ef9e914e337b077ebba4a",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://b57b2f04997cd6055404801982f57083f8e9242935b3ebf3bbed032f5035f2f1",
+				"dweb:/ipfs/QmdxHVMQEA32jnyroWZG2sk4NPtQFWXPfkDDYvRtK2APFA"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,718 @@
+{
+	"compiler": {
+		"version": "0.7.6+commit.7338295f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amountIn",
+						"type": "uint256"
+					}
+				],
+				"name": "Swap0for1",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amountIn",
+						"type": "uint256"
+					}
+				],
+				"name": "Swap1for0",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newAdmin",
+						"type": "address"
+					}
+				],
+				"name": "_newAdmin",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOracle",
+						"type": "address"
+					}
+				],
+				"name": "_newOracle",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newPool",
+						"type": "address"
+					}
+				],
+				"name": "_newPool",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "newTokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "_newtokenID",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "Token",
+						"type": "address"
+					}
+				],
+				"name": "_transferToAdmin",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "addLiquidity",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "admin",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "approve0",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "approve1",
+						"type": "uint256"
+					}
+				],
+				"name": "approveTokens",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "deposits",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint128",
+						"name": "liquidity",
+						"type": "uint128"
+					},
+					{
+						"internalType": "address",
+						"name": "token0",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "token1",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "farmNFT",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getTicks",
+				"outputs": [
+					{
+						"internalType": "int24",
+						"name": "lowTick",
+						"type": "int24"
+					},
+					{
+						"internalType": "int24",
+						"name": "highTick",
+						"type": "int24"
+					},
+					{
+						"internalType": "int24",
+						"name": "currentTick",
+						"type": "int24"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "liquidityCurrent",
+				"outputs": [
+					{
+						"internalType": "uint128",
+						"name": "",
+						"type": "uint128"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "",
+						"type": "bytes"
+					}
+				],
+				"name": "onERC721Received",
+				"outputs": [
+					{
+						"internalType": "bytes4",
+						"name": "",
+						"type": "bytes4"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "oracle",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pool",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "removeLP",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "sendNFTBack",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "spaceMultiplier",
+				"outputs": [
+					{
+						"internalType": "int24",
+						"name": "",
+						"type": "int24"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "stake",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "tickSpacing",
+				"outputs": [
+					{
+						"internalType": "int24",
+						"name": "",
+						"type": "int24"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "token0",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "token1",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "tokenId",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "int256",
+						"name": "amount0Delta",
+						"type": "int256"
+					},
+					{
+						"internalType": "int256",
+						"name": "amount1Delta",
+						"type": "int256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "",
+						"type": "bytes"
+					}
+				],
+				"name": "uniswapV3SwapCallback",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_token",
+						"type": "uint256"
+					}
+				],
+				"name": "withdraw",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"onERC721Received(address,address,uint256,bytes)": {
+					"details": "See {IERC721Receiver-onERC721Received}. Always returns `IERC721Receiver.onERC721Received.selector`."
+				}
+			},
+			"stateVariables": {
+				"deposits": {
+					"details": "deposits[tokenId] => Deposit"
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/core/VeloBot.sol": "V3BR"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts/token/ERC721/ERC721Holder.sol": {
+			"keccak256": "0xdb2133d55b8f3a94313af8f4371ae0501a58e412d471b03d8581214c5ea2ce33",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://cea1e4bf769f27c8c9c1442f1518b49ef6c8b71a4bd4ce88353da9e9a8ba1704",
+				"dweb:/ipfs/QmR1b8sj7fxgeHqDksV4GYTjZS1qajWC3yg9VCMUJus2bF"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol": {
+			"keccak256": "0xd03561349430ee87f356fb47017ebe9137fd8aab8380e7a1c3b270c7fba62376",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e747e57851bbd7685566623148b778542e0280aa0f8a8fe0ba54b4c6127f5d65",
+				"dweb:/ipfs/QmScpCryhDC3Ag12jgn6sCvrYvEQ3qeapxbcfuv1oRE4B2"
+			]
+		},
+		"contracts/core/INonfungiblePositionManager.sol": {
+			"keccak256": "0xfe7d9ee66050cd945f09f5a54bada3d8eb3b024aedc37b9c521703c61e3ac892",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://f5d4cc3b9d41b44b2419a72bc3cd27bc0608e0b488196348b4a2e342d2114467",
+				"dweb:/ipfs/QmYKKT5uccPQQSBT54wN2yZV5phs4kPYr76WvUerYiKbWp"
+			]
+		},
+		"contracts/core/VeloBot.sol": {
+			"keccak256": "0xc97403d975897656385812828d0c6d366f63bf950221b417cf882b12189059df",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f9508edc4911eb4b19f6cd94325cab7f623eef607e80025602d1137ec3bc8180",
+				"dweb:/ipfs/QmerbiLmhP3hGjoYvHB2Z1yVpiPaSCY5x8WnBaiujptq11"
+			]
+		},
+		"contracts/core/interfaces/ICLFactory.sol": {
+			"keccak256": "0x2b8dda4776bd095c900e408b2cb21324f72694bed75c69972cd0cb3b16b1bff0",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://d37ae64eabec6197ef78c9fd1d4c699398937ca5f3e9f852b11b32082ab2e680",
+				"dweb:/ipfs/QmWLLA5bV17Q3fS5fDdukXsaquZ5sNoP8KvBAEfYQHfK3Z"
+			]
+		},
+		"contracts/core/interfaces/ICLPool.sol": {
+			"keccak256": "0x0a11e1392c4b5ef4e47a3415a9b1a2118e9370d52a253dbd1c910bbbb615e91f",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://0c04e689e0589f3d67961fd5febcdc0f39c0700aeebef2537ccfb29ddba29de1",
+				"dweb:/ipfs/QmbuthGhVJsx45dpgF7p71VSuLshREAsaLJu34HQNgRJoz"
+			]
+		},
+		"contracts/core/interfaces/IERC20Minimal.sol": {
+			"keccak256": "0xa7d3b1fd5f9b9d8848a3ed9d1137eb9c79fa1fa4484347e0f75e285a2e51ea40",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://0a3f7e24d48048a87d541cc014fd51ff4cc3c54aeb78b559d17d75884671fb43",
+				"dweb:/ipfs/QmWQC2DiaLXaj3QnwUgvZrKP3xvWVxUjxXDfTMmq6aziYc"
+			]
+		},
+		"contracts/core/interfaces/IFactoryRegistry.sol": {
+			"keccak256": "0xa2dbe19a5c9e221ffd8e4612ee8a4aa1233ab0ad059d4b7d91a8dca1153bcea0",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://47a01d481d3a1f5172b8601d267439e24662849d7ebb3e1e66ec46d541e57831",
+				"dweb:/ipfs/QmYG56TEtS8dwHrNaHxGrTp8r6cDzRkuGKsHBbiToUVEvX"
+			]
+		},
+		"contracts/core/interfaces/IVoter.sol": {
+			"keccak256": "0x029239646ad77a70b26a702b7e286521a03d5b89d148ff7c13d9bf56f6203187",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://eccfb9403ee8f5e7f604eccb0cafcbd047c1f73371537227011e6d557895fa68",
+				"dweb:/ipfs/QmTjDHzzKTzkYhTeiWA1po8YL3USKkkMZSxZixVgsSQcXK"
+			]
+		},
+		"contracts/core/interfaces/IVotingEscrow.sol": {
+			"keccak256": "0x17ee815f29f7bc6a1528203976ed5bfdd945354dd72a7d322e8b092e331beb3d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9845c5056470191730c8a8688663bc9808172e57395c1c6053b5145bf9fd5098",
+				"dweb:/ipfs/QmXyoRGbDe6KPngPsKXWZCyLLdmRTFKdhVD5Gf1Y15rG7a"
+			]
+		},
+		"contracts/core/interfaces/callback/ICLMintCallback.sol": {
+			"keccak256": "0x22d4ed43f7d7313e676e80f7ae3315f53c3a84fbf256efae5116ef0aba32c1e8",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://a21d9618b9a9c2fe2cf35d9d6d608dd02a112bd05e6020fbe71e7e09064c2be7",
+				"dweb:/ipfs/QmeBQiyVmxVTPT3ftVFDkiDVgZLMar6SQegryLC7A3jmLr"
+			]
+		},
+		"contracts/core/interfaces/callback/ICLSwapCallback.sol": {
+			"keccak256": "0xb93e1ef2be3090a64b3b024f60253aef64b875f61dffaef8b9231351f8054948",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://b16ccd544a6a551c977b7a7d6b6b9704c68e86624d66ecb16d945d3b88239458",
+				"dweb:/ipfs/QmPBP5K81AFfHazhbbVb9ZXh6hzKeLqZcEUxnrkKNY7z2L"
+			]
+		},
+		"contracts/core/interfaces/pool/ICLPoolActions.sol": {
+			"keccak256": "0x7699f31261ab40982e34febe16128f1edfdad39075969195301352ea66bcac40",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://074f1c470e11f30d0fae8b95b963c9d19dcbd2c5bd17ad4ebba95c5f0f073044",
+				"dweb:/ipfs/QmdDWMUspgBXfLhcxqESez9rSwA8JYNRycmhkhuKoDCWqJ"
+			]
+		},
+		"contracts/core/interfaces/pool/ICLPoolConstants.sol": {
+			"keccak256": "0xfad00d4ca1a40ef27d9614a98483ca67c4491b6f19e376901745c57a6949b512",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://2b5ea522565efb803d146673ff9e37aa090a5abff334fea587da62f4fb5d6647",
+				"dweb:/ipfs/QmVRPscHFVjYFvRbJf41zVLtA2jVLbEUH66KGtEzspXnWS"
+			]
+		},
+		"contracts/core/interfaces/pool/ICLPoolDerivedState.sol": {
+			"keccak256": "0xc15e4192a1b7b756cababb994341dc8e78627e1341465e47b1dcb66e9ed54af8",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://ee4b9269244f6b7ac57cba3b8966ac188220596d16cef71d186f0a6446593b4e",
+				"dweb:/ipfs/QmQjyc5ggDgoAv4YbL5uKpNxRDoTvVYw6vePFgu4aNigmQ"
+			]
+		},
+		"contracts/core/interfaces/pool/ICLPoolEvents.sol": {
+			"keccak256": "0x32fbcac8952f1c5c44b466b0e1c28634ce71372c0f65242aa0d821cebdddcc2b",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://19f22382292967f97640f84a7edfa01cf7deb303bf882344b9985007f1dcbef2",
+				"dweb:/ipfs/Qmej7vWwun9fRBCrcvzPHdZP1jtLSCxJtjTSdkVTcgWeAE"
+			]
+		},
+		"contracts/core/interfaces/pool/ICLPoolOwnerActions.sol": {
+			"keccak256": "0xeafd14ae3e15c9f663507e004c599618bfd5d2a90d58b3b450f9372f9e3f54f8",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://49472c8cf06dc7084e22fc57ffdce860aa7a9ff77f12e4bef0c13a078bbc5831",
+				"dweb:/ipfs/Qmd29vWULezsJJzhw3wZxsU6Hsng5949v2TiVCbdga4Vqe"
+			]
+		},
+		"contracts/core/interfaces/pool/ICLPoolState.sol": {
+			"keccak256": "0xe57d65825a097d6f0ab55d7ae39b528695b3df65320ed524124fbb55949bfcf9",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://b63b25beebe612acfd564f40b0d95b3844ee71bf969a3357419e7a54f1ece961",
+				"dweb:/ipfs/Qmdk3mNLz3cSZscbXFsJp69gjgxFcBv6K5mdc6tjnmtFSR"
+			]
+		},
+		"contracts/core/libraries/BitMath.sol": {
+			"keccak256": "0x82e425066110aac05ed8a9fc90f9ee85142b6f434769447e49d4438a8d9fcd82",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://77a97078bc992c18c59cb61e07fa4632c8a26b6babf00f3b16eabb5dcaa953b4",
+				"dweb:/ipfs/QmTj15ufLWk6AxedSVXBcLp5cYf2DCJAeDi94cVemCkm54"
+			]
+		},
+		"contracts/core/libraries/FixedPoint128.sol": {
+			"keccak256": "0x2d1f4f73ae0d8f0a210b8d30084659b57c56ac8f2f96011fca36f00a6d417178",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://2ba88933f16cd2df398e19c6ad227268f83c03081b70d243c97116d2ed9bc241",
+				"dweb:/ipfs/QmTUGxdh8snzEM9VrTSS47StCg9VVWvvLJtJeNnMTFY4xb"
+			]
+		},
+		"contracts/core/libraries/FixedPoint96.sol": {
+			"keccak256": "0x0ba8a9b95a956a4050749c0158e928398c447c91469682ca8a7cc7e77a7fe032",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://186d3b528866065a5856f96d2aeec698efa99f8da913e9adf34f8cc296cc993d",
+				"dweb:/ipfs/QmUAiMvtAQp8c9dy57bqJYzG7hkb1uChiPaQmt264skoqP"
+			]
+		},
+		"contracts/core/libraries/FullMath.sol": {
+			"keccak256": "0x5340256039418f5d03512a44173d3dcf1da277a73a461e06fb5668f49cfc46f1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://75dee99795d1125875233a7f1d356935099cc97b4085c0e451060d77db85d144",
+				"dweb:/ipfs/QmTGqyrxVLQd8TBaarqSQDiYvq1QFutCdmTyXk6JpxzKTN"
+			]
+		},
+		"contracts/core/libraries/LiquidityAmounts.sol": {
+			"keccak256": "0xae7f7b0bbbd864bc1761ec5eac62ec761f2ef168d32ef9e914e337b077ebba4a",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://b57b2f04997cd6055404801982f57083f8e9242935b3ebf3bbed032f5035f2f1",
+				"dweb:/ipfs/QmdxHVMQEA32jnyroWZG2sk4NPtQFWXPfkDDYvRtK2APFA"
+			]
+		},
+		"contracts/core/libraries/LiquidityMath.sol": {
+			"keccak256": "0xd1059ccc904c8752cec175e8d99e31921c6cd7f3a9c2dd315ce34ac486172ac9",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://f3630a49e62fa056e2cc4e0278b6f17c5f7e1c9ad2190540cf84c152b58cdef8",
+				"dweb:/ipfs/QmdGjKRTNY2qLXJtR2rXU8Nxk4pZwXfbzZYNn3F472QEn6"
+			]
+		},
+		"contracts/core/libraries/LowGasSafeMath.sol": {
+			"keccak256": "0x86715eb960f18e01ac94e3bba4614ed51a887fa3c5bd1c43bf80aa98e019cf2d",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://bfc1d5d58e59015086b0e65a6c3a2ddad312e2350480510f6c0c8167f3d71a37",
+				"dweb:/ipfs/QmQndULYjFsHKHjMAKLMfc12vWbVB5FawtioHtvwcWRJZp"
+			]
+		},
+		"contracts/core/libraries/Position.sol": {
+			"keccak256": "0xcf1e701e3fae35be8b77ff1217cfdd23d33eb16fd3cec70be8ea6888f87af285",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://c8c89746dd30e76cc029d4e090e402b28aae0659cc71800758b99137dfe85f55",
+				"dweb:/ipfs/QmY4Ft1YBLqzqwTgNdpCyRd7WrY78zKgg4Ddv2zqZiBEiE"
+			]
+		},
+		"contracts/core/libraries/SafeCast.sol": {
+			"keccak256": "0xd4c1c1b67f946b077d7c52a158113763a89a210fc2927b8491055a962ecd18c0",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://5344400c74320ca8dbe19241db7ff49babbd6c875c1b561c79d6e4315a9fb5f9",
+				"dweb:/ipfs/QmRKCNTbkovxK1WvejXZr3iAHhGN97ZT1yWGsWCJFkrT5X"
+			]
+		},
+		"contracts/core/libraries/SqrtPriceMath.sol": {
+			"keccak256": "0xefd51a282ca9fbc89394776e7f5c6f96fa084ca26b71d99727780332c87d1843",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://1f09b719eff523f65d0d11fc476b9735e1390018d5ff585991d0fc644e913ecf",
+				"dweb:/ipfs/QmNiZxxQhqteYgJdhCQ3cZ4S7bTQf2AQRUJqMVvPY3doot"
+			]
+		},
+		"contracts/core/libraries/Tick.sol": {
+			"keccak256": "0xb5ebd80c667f4501dba65f4e39e51ff36e5334480849e0ed8604222d20b4ed1e",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://246f590513441ac0f307170f5099e4a0c0b1f579406fc30b909b249858dbd099",
+				"dweb:/ipfs/QmaA5uC3eck7nMqyJbpSPEhmXmAXaKLNBSS1Lfnzzzjc95"
+			]
+		},
+		"contracts/core/libraries/TickBitmap.sol": {
+			"keccak256": "0xd829fadfca3f8f5870c877c7eeceb4a692603c16b711174526129987e8745f5b",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://1d2cbf3802f7e611708a45bc390ee9307d947e49b348294591659444b9989c05",
+				"dweb:/ipfs/Qmcny7JNyVYCtcZG3b1BL4ThuKREmAkE9ZKaC3i32pnt7X"
+			]
+		},
+		"contracts/core/libraries/TickMath.sol": {
+			"keccak256": "0x2aa3180a8a59b34a513b948d3f2207b5376de7a2c37065853b7c9fbf0cd3d43f",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://c4d46ca5384037f14497c6268342b15becf8bbe1a8fecbcd89ca5b80f41fabc2",
+				"dweb:/ipfs/QmanLcdh7EppV4yJ1CdWfPB67es3nEjrDiByAYwgkSE58D"
+			]
+		},
+		"contracts/core/libraries/TransferHelper.sol": {
+			"keccak256": "0x3bbe07a0684d98efe73f7012e446873494e74983e1f75a16d42c25b956d61651",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://78ac9659c70ba3253a6e526ba5a144994fb3d32df2e9537787eeb45aae320aec",
+				"dweb:/ipfs/QmbaZRbPP2wFZ9coJd2iyPM37hm3kXzPLuRtL6KKr1MCSL"
+			]
+		},
+		"contracts/core/libraries/UnsafeMath.sol": {
+			"keccak256": "0x5f36d7d16348d8c37fe64fda932018d6e5e8acecd054f0f97d32db62d20c6c88",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://4bd4e817ea3d2c26bb2be7e58db3eaa403119562c18d4c09cc92fb31aa231496",
+				"dweb:/ipfs/QmbpjgL8Hf1mhmUyf9hpuPk4noGAggCdTqaRBFKqNF3AQw"
+			]
+		},
+		"contracts/libraries/VelodromeTimeLibrary.sol": {
+			"keccak256": "0x53d5f0b1b864a7dc552ef0291526938a36b1936517d17f62515bb6ba51c1260d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://bbc80fd3b18f04224a2a813d6c20a305c7e0479d6414a78d482b45635bc97dba",
+				"dweb:/ipfs/QmQFbXCkjzeFgY5M8DyeKZjxeuN8xGdmUmjNH7FNMkLi8T"
+			]
+		}
+	},
+	"version": 1
+}
