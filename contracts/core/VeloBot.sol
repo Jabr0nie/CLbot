@@ -329,8 +329,8 @@ function rebalance() public payable {
     require(total > 0, "Zero total value");
 
     // Calculate target proportions
-    uint256 usdcProp = FullMath.mulDiv(total, proportion, 100); // Target USDC
-    uint256 veloProp = LowGasSafeMath.sub(total, usdcProp); // Target VELO in USDC terms
+    uint256 veloProp = FullMath.mulDiv(total, proportion, 100); // Target USDC
+    uint256 usdcProp = LowGasSafeMath.sub(total, veloProp); // Target VELO in USDC terms
 
     // Calculate deviations
     int256 usdcVar = int256(amount0) - int256(usdcProp); // USDC deviation
@@ -352,7 +352,6 @@ function rebalance() public payable {
         Swap1for0(amountIn);
     }
 }
-
 
 function addLiquidity() public payable returns(uint256) {
     uint256 amount0ToMint = IERC20(token0).balanceOf(address(this));

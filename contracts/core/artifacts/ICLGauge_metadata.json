@@ -617,11 +617,11 @@
 			]
 		},
 		"contracts/core/VeloBot.sol": {
-			"keccak256": "0x46ea2e0253f49fdb95ce5f9210afb03860a847edb46064995e7799b442f7b527",
+			"keccak256": "0x8d3cd184db94e1c19da3e8c168d4dcd7c5a34da2fb280f8666fa29eaf5ea535c",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://3ac89dc9f03d0e334532476c368d9e161bdf9cb3ca556454efe3055cff339e46",
-				"dweb:/ipfs/Qmbgs5F6X4GbkiUozfDfXyqKr6Tq4teUihQAefuwsoxmFP"
+				"bzz-raw://98565cf636b6652345c20ae1f13609e882f050a9c200d5ebb79bdd468bbd0273",
+				"dweb:/ipfs/QmQ2Uc1Pm9aADw66XY5Bgh8U1wN6fD28qpqeNFfETmHens"
 			]
 		},
 		"contracts/core/interfaces/ICLFactory.sol": {
