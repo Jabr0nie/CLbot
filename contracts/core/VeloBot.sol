@@ -301,16 +301,56 @@ contract V3BRAIN is ERC721Holder, ICLSwapCallback{
         }
 
 function rebalance() public payable {
-    // Approve the position manager
+    // Fetch ticks
     (int24 tickLower,, int24 currentTick) = getTicks();
-    uint256 proportion = (uint256(currentTick - tickLower) * (10 ** 2)) / 200;
-    uint256 _amount1 = IERC20(token1).balanceOf(address(this));
-    if (_amount1 > 0) {
-        Swap1for0(_amount1);
-    } 
-    uint256 _amount0 = IERC20(token0).balanceOf(address(this));
-    _amount0 = ((_amount0 * proportion) / 10 ** 2);
-    Swap0for1(_amount0);
+    require(currentTick >= tickLower, "Invalid tick range");
+
+    // Get price from oracle (USDC/VELO, scaled by 10^5)
+    uint256 veloPrice = Oracle(oracle).GetPrice(pool);
+    require(veloPrice > 0, "Invalid oracle price");
+
+    // Calculate proportion (0–100)
+    uint256 proportion = FullMath.mulDiv(uint256(currentTick - tickLower), 100, 200);
+    if (proportion > 100) {
+        proportion = 100; // Cap at 100%
+    }
+
+    // Fetch token balances
+    uint256 amount0 = IERC20(token0).balanceOf(address(this)); // USDC, 6 decimals
+    uint256 amount1 = IERC20(token1).balanceOf(address(this)); // VELO, 18 decimals
+    require(amount0 > 0 || amount1 > 0, "No tokens to rebalance");
+
+    // Convert VELO to USDC terms
+    // USDC (6 decimals) = (VELO (18 decimals) * price (5 decimals)) / 10^17
+    uint256 amount1InUSDC = FullMath.mulDiv(amount1, veloPrice, 10 ** 17);
+
+    // Calculate total value in USDC terms
+    uint256 total = LowGasSafeMath.add(amount0, amount1InUSDC);
+    require(total > 0, "Zero total value");
+
+    // Calculate target proportions
+    uint256 usdcProp = FullMath.mulDiv(total, proportion, 100); // Target USDC
+    uint256 veloProp = LowGasSafeMath.sub(total, usdcProp); // Target VELO in USDC terms
+
+    // Calculate deviations
+    int256 usdcVar = int256(amount0) - int256(usdcProp); // USDC deviation
+    int256 veloVar = int256(amount1InUSDC) - int256(veloProp); // VELO deviation in USDC terms
+
+    // Execute swap
+    if (usdcVar > 0) {
+        // Too much USDC, swap for VELO
+        uint256 amountIn = uint256(usdcVar); // USDC amount (6 decimals)
+        require(amountIn <= amount0, "Insufficient USDC");
+        require(amountIn > 0, "Zero swap amount");
+        Swap0for1(amountIn);
+    } else if (veloVar > 0) {
+        // Too much VELO, swap for USDC
+        // Convert veloVar (USDC, 6 decimals) to VELO (18 decimals)
+        uint256 amountIn = FullMath.mulDiv(uint256(veloVar), 10 ** 17, veloPrice);
+        require(amountIn <= amount1, "Insufficient VELO");
+        require(amountIn > 0, "Zero swap amount");
+        Swap1for0(amountIn);
+    }
 }
 
 
@@ -379,6 +419,7 @@ function addLiquidity() public payable returns(uint256) {
             return;
         }
         withdraw();
+        collectRewards();
         removeLP();
         rebalance();
         addLiquidity();
@@ -390,6 +431,10 @@ function addLiquidity() public payable returns(uint256) {
         rebalance();
         addLiquidity();
         stake();
+    }
+
+        function collectRewards() public payable {
+             ICLGauge(0xC8c7b5aE61d97Be7d02d606629059487066DC9CF).getReward(tokenId);
     }
 
 
