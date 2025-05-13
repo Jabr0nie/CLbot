@@ -103,6 +103,8 @@ contract V3BRAIN is ERC721Holder, ICLSwapCallback{
     address public token0; // token0 on Optimism
     address public token1; // token1 on Optimism
     address public farmNFT;
+    address public gauge;
+    uint256 public harvestPercent;
     uint256 public tokenId;
     address public admin;
     int24 public tickSpacing;
@@ -119,13 +121,27 @@ contract V3BRAIN is ERC721Holder, ICLSwapCallback{
     /// @dev deposits[tokenId] => Deposit
     mapping(uint256 => Deposit) public deposits;
 
-        constructor() {
+        constructor(uint256 _harvestPercent, address _pool, address _oracle) {
         admin = msg.sender;
+        harvestPercent = _harvestPercent;
+        pool = _pool;
+        token0 = ICLPoolConstants(pool).token0();
+        token1 = ICLPoolConstants(pool).token1();
+        farmNFT = ICLPoolConstants(pool).nft();
+        tickSpacing = ICLPoolConstants(pool).tickSpacing();
+        gauge = ICLPoolConstants(pool).gauge();
+        oracle = _oracle;
+
     }
 
     function _newAdmin(address newAdmin) external {
         require(msg.sender == admin, "Only owner can do this");
         admin = newAdmin;
+    }
+
+    function _newHarvestPercent(uint256 newHarvestPercent) external {
+        require(msg.sender == admin, "Only owner can do this");
+        harvestPercent = newHarvestPercent;
     }
 
     function _newOracle(address newOracle) external {
@@ -165,6 +181,39 @@ contract V3BRAIN is ERC721Holder, ICLSwapCallback{
             sqrtPriceLimitX96, // price limit
             data               // callback data
         );
+    }
+
+        function Harvest() public payable {
+
+        uint veloBalance = IERC20(0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db).balanceOf(address(this));
+        uint amountIn = (veloBalance * harvestPercent) /100;
+        uint harvest = veloBalance - amountIn;
+
+        // Get current sqrtPriceX96 from the pool
+        (uint160 sqrtPriceX96, , , , , ) = ICLPoolState(0x7cfc2Da3ba598ef4De692905feDcA32565AB836E).slot0();
+        uint160 sqrtPriceLimitX96 = uint160(sqrtPriceX96 * 99 / 100); // 1% slippage
+
+        // Ensure valid range
+        if (sqrtPriceLimitX96 <= TickMath.MIN_SQRT_RATIO) {
+            sqrtPriceLimitX96 = TickMath.MIN_SQRT_RATIO + 1;
+        }
+
+        // Approve pool to spend token0
+        IERC20Minimal(0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db).approve(0x7cfc2Da3ba598ef4De692905feDcA32565AB836E, amountIn);
+
+        // Prepare data for callback (not strictly needed here, but included for completeness)
+        bytes memory data = abi.encode(address(this));
+
+        // Call the pool's swap function
+        ICLPoolActions(0x7cfc2Da3ba598ef4De692905feDcA32565AB836E).swap(
+            address(this),     // recipient
+            true,              // zeroForOne: token0 -> token1
+            int256(amountIn),  // exact input
+            sqrtPriceLimitX96, // price limit
+            data               // callback data
+        );
+
+        IERC20(0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db).transfer(admin, harvest);
     }
 
     function Swap1for0(uint256 amountIn) public payable {
@@ -219,29 +268,29 @@ contract V3BRAIN is ERC721Holder, ICLSwapCallback{
     }
 
     function stake() public payable {
-        IERC721(0x416b433906b1B72FA758e166e239c43d68dC6F29).approve(admin, tokenId);
-        IERC721(0x416b433906b1B72FA758e166e239c43d68dC6F29).approve(0xC8c7b5aE61d97Be7d02d606629059487066DC9CF, tokenId);
-        ICLGauge(0xC8c7b5aE61d97Be7d02d606629059487066DC9CF).deposit(tokenId);
+        IERC721(farmNFT).approve(admin, tokenId);
+        IERC721(farmNFT).approve(gauge, tokenId);
+        ICLGauge(gauge).deposit(tokenId);
     }
 
 
     function withdraw() public payable {
-        ICLGauge(0xC8c7b5aE61d97Be7d02d606629059487066DC9CF).withdraw(tokenId);
+        ICLGauge(gauge).withdraw(tokenId);
     }
 
     function _manualWithdraw(uint256 _tokenid) public payable {
-        ICLGauge(0xC8c7b5aE61d97Be7d02d606629059487066DC9CF).withdraw(_tokenid);
+        ICLGauge(gauge).withdraw(_tokenid);
     }
 
     function liquidityCurrent() public view returns(uint128){
-        (, , , , , , , uint128 liquidity, , , , ) = INonfungiblePositionManager(0x416b433906b1B72FA758e166e239c43d68dC6F29).positions(tokenId);
+        (, , , , , , , uint128 liquidity, , , , ) = INonfungiblePositionManager(farmNFT).positions(tokenId);
         return (liquidity);
     }
 
 
     function removeLP() public payable {
 
-        (, , , , , , , uint128 liquidity, , , , ) = INonfungiblePositionManager(0x416b433906b1B72FA758e166e239c43d68dC6F29).positions(tokenId);
+        (, , , , , , , uint128 liquidity, , , , ) = INonfungiblePositionManager(farmNFT).positions(tokenId);
 
         INonfungiblePositionManager.DecreaseLiquidityParams memory params =
             INonfungiblePositionManager.DecreaseLiquidityParams({
@@ -254,7 +303,7 @@ contract V3BRAIN is ERC721Holder, ICLSwapCallback{
             });
 
 
-        INonfungiblePositionManager(0x416b433906b1B72FA758e166e239c43d68dC6F29).decreaseLiquidity(params);
+        INonfungiblePositionManager(farmNFT).decreaseLiquidity(params);
 
         INonfungiblePositionManager.CollectParams memory Collectparams =
             INonfungiblePositionManager.CollectParams({
@@ -263,18 +312,18 @@ contract V3BRAIN is ERC721Holder, ICLSwapCallback{
                 amount0Max: 9007199254740991000000000000000000,
                 amount1Max: 9007199254740991000000000000000000
             });
-        INonfungiblePositionManager(0x416b433906b1B72FA758e166e239c43d68dC6F29).collect(Collectparams);
+        INonfungiblePositionManager(farmNFT).collect(Collectparams);
 
     }
 
     function sendNFTBack() public payable {
         require(msg.sender == admin, "Only owner can do this");
-        IERC721(0x416b433906b1B72FA758e166e239c43d68dC6F29).transferFrom(address(this), msg.sender, tokenId);
+        IERC721(farmNFT).transferFrom(address(this), msg.sender, tokenId);
     }
 
         function manualSendNFTBack(uint256 _tokenID) public payable {
         require(msg.sender == admin, "Only owner can do this");
-        IERC721(0x416b433906b1B72FA758e166e239c43d68dC6F29).transferFrom(address(this), msg.sender, _tokenID);
+        IERC721(farmNFT).transferFrom(address(this), msg.sender, _tokenID);
     }
 
 
@@ -285,6 +334,7 @@ contract V3BRAIN is ERC721Holder, ICLSwapCallback{
         token1 = ICLPoolConstants(pool).token1();
         farmNFT = ICLPoolConstants(pool).nft();
         tickSpacing = ICLPoolConstants(pool).tickSpacing();
+        gauge = ICLPoolConstants(pool).gauge();
     }
 
     function _transferToAdmin(address Token) external {
@@ -400,7 +450,7 @@ function addLiquidity() public payable returns(uint256) {
 
     function checkFarm() public view returns(bool){
         (,, int24 currentTick) = getTicks();
-        (, , , , ,int24 tickLower, int24 tickHigher, , , , , ) = INonfungiblePositionManager(0x416b433906b1B72FA758e166e239c43d68dC6F29).positions(tokenId);
+        (, , , , ,int24 tickLower, int24 tickHigher, , , , , ) = INonfungiblePositionManager(farmNFT).positions(tokenId);
         if(currentTick < tickLower){
             return false;
         }
@@ -413,16 +463,15 @@ function addLiquidity() public payable returns(uint256) {
     }
 
     function UpdatePosition() public payable {
-        bool inRange = checkFarm();
-        if (inRange == true) {
-            return;
-        }
-        withdraw();
-        collectRewards();
-        removeLP();
-        rebalance();
-        addLiquidity();
-        stake();
+            bool inRange = checkFarm();
+            if (inRange == true) {
+                return;
+            }
+                withdraw();
+                removeLP();
+                rebalance();
+                addLiquidity();
+                stake();
     }
 
     function initialPosition() public payable {
@@ -433,7 +482,7 @@ function addLiquidity() public payable returns(uint256) {
     }
 
         function collectRewards() public payable {
-             ICLGauge(0xC8c7b5aE61d97Be7d02d606629059487066DC9CF).getReward(tokenId);
+             ICLGauge(gauge).getReward(tokenId);
     }
 
 
