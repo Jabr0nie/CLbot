@@ -121,9 +121,8 @@ contract V3BRAIN is ERC721Holder, ICLSwapCallback{
     /// @dev deposits[tokenId] => Deposit
     mapping(uint256 => Deposit) public deposits;
 
-        constructor(uint256 _harvestPercent, address _pool, address _oracle) {
+        constructor(address _pool, address _oracle) {
         admin = msg.sender;
-        harvestPercent = _harvestPercent;
         pool = _pool;
         token0 = ICLPoolConstants(pool).token0();
         token1 = ICLPoolConstants(pool).token1();
@@ -139,17 +138,17 @@ contract V3BRAIN is ERC721Holder, ICLSwapCallback{
         admin = newAdmin;
     }
 
-    function _newHarvestPercent(uint256 newHarvestPercent) external {
-        require(msg.sender == admin, "Only owner can do this");
-        harvestPercent = newHarvestPercent;
-    }
-
     function _newOracle(address newOracle) external {
         require(msg.sender == admin, "Only owner can do this");
         oracle = newOracle;
     }
 
-    function _newtokenID(uint256 newTokenId) external {
+    function _newSpaceMultiplier(int24 newSpaceMultiplier) external {
+        require(msg.sender == admin, "Only owner can do this");
+        spaceMultiplier = newSpaceMultiplier;
+    }
+
+        function _newtokenID(uint256 newTokenId) external {
         require(msg.sender == admin, "Only owner can do this");
         tokenId = newTokenId;
     }
@@ -183,38 +182,6 @@ contract V3BRAIN is ERC721Holder, ICLSwapCallback{
         );
     }
 
-        function Harvest() public payable {
-
-        uint veloBalance = IERC20(0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db).balanceOf(address(this));
-        uint amountIn = (veloBalance * harvestPercent) /100;
-        uint harvest = veloBalance - amountIn;
-
-        // Get current sqrtPriceX96 from the pool
-        (uint160 sqrtPriceX96, , , , , ) = ICLPoolState(0x7cfc2Da3ba598ef4De692905feDcA32565AB836E).slot0();
-        uint160 sqrtPriceLimitX96 = uint160(sqrtPriceX96 * 99 / 100); // 1% slippage
-
-        // Ensure valid range
-        if (sqrtPriceLimitX96 <= TickMath.MIN_SQRT_RATIO) {
-            sqrtPriceLimitX96 = TickMath.MIN_SQRT_RATIO + 1;
-        }
-
-        // Approve pool to spend token0
-        IERC20Minimal(0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db).approve(0x7cfc2Da3ba598ef4De692905feDcA32565AB836E, amountIn);
-
-        // Prepare data for callback (not strictly needed here, but included for completeness)
-        bytes memory data = abi.encode(address(this));
-
-        // Call the pool's swap function
-        ICLPoolActions(0x7cfc2Da3ba598ef4De692905feDcA32565AB836E).swap(
-            address(this),     // recipient
-            true,              // zeroForOne: token0 -> token1
-            int256(amountIn),  // exact input
-            sqrtPriceLimitX96, // price limit
-            data               // callback data
-        );
-
-        IERC20(0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db).transfer(admin, harvest);
-    }
 
     function Swap1for0(uint256 amountIn) public payable {
         require(amountIn > 0, "Invalid input amount");
@@ -345,8 +312,8 @@ contract V3BRAIN is ERC721Holder, ICLSwapCallback{
     function getTicks () public view returns (int24 lowTick, int24 highTick, int24 currentTick){
         (, currentTick, , , , ) = ICLPool(pool).slot0();
         int24 _currentTick = (currentTick / tickSpacing) * tickSpacing;
-        lowTick = _currentTick;
-        highTick = _currentTick + tickSpacing;
+        lowTick = _currentTick - (tickSpacing * spaceMultiplier);
+        highTick = _currentTick + (tickSpacing * spaceMultiplier);
         return (lowTick, highTick, currentTick);
         }
 
@@ -360,7 +327,7 @@ function rebalance() public payable {
     require(veloPrice > 0, "Invalid oracle price");
 
     // Calculate proportion (0–100)
-    uint256 proportion = FullMath.mulDiv(uint256(currentTick - tickLower), 100, 200);
+    uint256 proportion = FullMath.mulDiv(uint256(currentTick - tickLower), 100, uint256(tickSpacing * (spaceMultiplier * 2)));
     if (proportion > 100) {
         proportion = 100; // Cap at 100%
     }
@@ -372,7 +339,7 @@ function rebalance() public payable {
 
     // Convert VELO to USDC terms
     // USDC (6 decimals) = (VELO (18 decimals) * price (5 decimals)) / 10^17
-    uint256 amount1InUSDC = FullMath.mulDiv(amount1, veloPrice, 10 ** 17);
+    uint256 amount1InUSDC = FullMath.mulDiv(amount1, veloPrice, 10 ** 18);
 
     // Calculate total value in USDC terms
     uint256 total = LowGasSafeMath.add(amount0, amount1InUSDC);
@@ -483,7 +450,8 @@ function addLiquidity() public payable returns(uint256) {
 
         function collectRewards() public payable {
              ICLGauge(gauge).getReward(tokenId);
+             uint veloBal = IERC20(0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db).balanceOf(address(this));
+             IERC20(0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db).transfer(admin, veloBal);
     }
-
 
 }
